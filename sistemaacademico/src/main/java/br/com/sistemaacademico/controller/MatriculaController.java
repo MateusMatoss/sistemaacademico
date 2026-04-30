@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.MatriculaRequestDTO;
 import br.com.sistemaacademico.model.MatriculaModel;
 import br.com.sistemaacademico.service.MatriculaService;
 import jakarta.validation.Valid;
@@ -28,13 +29,13 @@ public class MatriculaController {
     }
 
     @PostMapping
-    public MatriculaModel salvar(@RequestBody @Valid MatriculaModel matricula) {
-        return matriculaService.salvar(matricula);
+    public MatriculaModel salvar(@RequestBody @Valid MatriculaRequestDTO matriculaDTO) {
+        return matriculaService.salvar(matriculaDTO);
     }
 
     @PutMapping("/{id}")
-    public MatriculaModel atualizar(@PathVariable Long id, @RequestBody @Valid MatriculaModel matricula) {
-        return matriculaService.atualizar(id, matricula);
+    public MatriculaModel atualizar(@PathVariable Long id, @RequestBody @Valid MatriculaRequestDTO matriculaDTO) {
+        return matriculaService.atualizar(id, matriculaDTO);
     }
 
     @DeleteMapping("/{id}")

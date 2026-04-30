@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.dto.MatriculaRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.AlunoModel;
 import br.com.sistemaacademico.model.DisciplinaModel;
@@ -38,41 +39,41 @@ public class MatriculaService {
                 .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
     }
 
-    public MatriculaModel salvar(MatriculaModel matricula) {
-        AlunoModel aluno = alunoRepository.findById(matricula.getAluno().getIdPessoa())
+    public MatriculaModel salvar(MatriculaRequestDTO dto) {
+        AlunoModel aluno = alunoRepository.findById(dto.getIdAluno())
                 .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
 
-        DisciplinaModel disciplina = disciplinaRepository.findById(matricula.getDisciplina().getIdDisciplina())
+        DisciplinaModel disciplina = disciplinaRepository.findById(dto.getIdDisciplina())
                 .orElseThrow(() -> new ResourceNotFoundException("Disciplina não encontrada"));
 
+        MatriculaModel matricula = new MatriculaModel();
         matricula.setAluno(aluno);
         matricula.setDisciplina(disciplina);
 
-        if (matricula.getDataMatricula() == null) {
+        if (dto.getDataMatricula() != null) {
+            matricula.setDataMatricula(dto.getDataMatricula());
+        } else {
             matricula.setDataMatricula(LocalDate.now());
         }
 
         return matriculaRepository.save(matricula);
     }
 
-    public MatriculaModel atualizar(Long id, MatriculaModel matriculaAtualizada) {
+    public MatriculaModel atualizar(Long id, MatriculaRequestDTO dto) {
         MatriculaModel matriculaExistente = buscarPorId(id);
 
-        if (matriculaAtualizada.getDataMatricula() != null) {
-            matriculaExistente.setDataMatricula(matriculaAtualizada.getDataMatricula());
+        if (dto.getDataMatricula() != null) {
+            matriculaExistente.setDataMatricula(dto.getDataMatricula());
         }
 
-        if (matriculaAtualizada.getAluno() != null && matriculaAtualizada.getAluno().getIdPessoa() != null) {
-            AlunoModel aluno = alunoRepository.findById(matriculaAtualizada.getAluno().getIdPessoa())
-                    .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
-            matriculaExistente.setAluno(aluno);
-        }
+        AlunoModel aluno = alunoRepository.findById(dto.getIdAluno())
+                .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
 
-        if (matriculaAtualizada.getDisciplina() != null && matriculaAtualizada.getDisciplina().getIdDisciplina() != null) {
-            DisciplinaModel disciplina = disciplinaRepository.findById(matriculaAtualizada.getDisciplina().getIdDisciplina())
-                    .orElseThrow(() -> new ResourceNotFoundException("Disciplina não encontrada"));
-            matriculaExistente.setDisciplina(disciplina);
-        }
+        DisciplinaModel disciplina = disciplinaRepository.findById(dto.getIdDisciplina())
+                .orElseThrow(() -> new ResourceNotFoundException("Disciplina não encontrada"));
+
+        matriculaExistente.setAluno(aluno);
+        matriculaExistente.setDisciplina(disciplina);
 
         return matriculaRepository.save(matriculaExistente);
     }

@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.dto.FrequenciaRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.FrequenciaModel;
 import br.com.sistemaacademico.model.MatriculaModel;
@@ -30,29 +31,35 @@ public class FrequenciaService {
                 .orElseThrow(() -> new ResourceNotFoundException("Frequência não encontrada"));
     }
 
-    public FrequenciaModel salvar(FrequenciaModel frequencia) {
-        MatriculaModel matricula = matriculaRepository.findById(frequencia.getMatricula().getIdMatricula())
+    public FrequenciaModel salvar(FrequenciaRequestDTO dto) {
+        MatriculaModel matricula = matriculaRepository.findById(dto.getIdMatricula())
                 .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
 
+        FrequenciaModel frequencia = new FrequenciaModel();
+
+        frequencia.setPresente(dto.getPresente());
         frequencia.setMatricula(matricula);
 
-        if (frequencia.getDataAula() == null) {
+        if (dto.getDataAula() != null) {
+            frequencia.setDataAula(dto.getDataAula());
+        } else {
             frequencia.setDataAula(LocalDate.now());
         }
 
         return frequenciaRepository.save(frequencia);
     }
 
-    public FrequenciaModel atualizar(Long id, FrequenciaModel frequenciaAtualizada) {
+    public FrequenciaModel atualizar(Long id, FrequenciaRequestDTO dto) {
         FrequenciaModel frequenciaExistente = buscarPorId(id);
 
-        frequenciaExistente.setDataAula(frequenciaAtualizada.getDataAula());
-        frequenciaExistente.setPresente(frequenciaAtualizada.getPresente());
+        MatriculaModel matricula = matriculaRepository.findById(dto.getIdMatricula())
+                .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
 
-        if (frequenciaAtualizada.getMatricula() != null && frequenciaAtualizada.getMatricula().getIdMatricula() != null) {
-            MatriculaModel matricula = matriculaRepository.findById(frequenciaAtualizada.getMatricula().getIdMatricula())
-                    .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
-            frequenciaExistente.setMatricula(matricula);
+        frequenciaExistente.setPresente(dto.getPresente());
+        frequenciaExistente.setMatricula(matricula);
+
+        if (dto.getDataAula() != null) {
+            frequenciaExistente.setDataAula(dto.getDataAula());
         }
 
         return frequenciaRepository.save(frequenciaExistente);

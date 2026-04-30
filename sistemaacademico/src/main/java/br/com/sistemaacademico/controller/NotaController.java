@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.NotaRequestDTO;
 import br.com.sistemaacademico.model.NotaModel;
 import br.com.sistemaacademico.service.NotaService;
 import jakarta.validation.Valid;
@@ -28,13 +29,13 @@ public class NotaController {
     }
 
     @PostMapping
-    public NotaModel salvar(@RequestBody @Valid NotaModel nota) {
-        return notaService.salvar(nota);
+    public NotaModel salvar(@RequestBody @Valid NotaRequestDTO notaDTO) {
+        return notaService.salvar(notaDTO);
     }
 
     @PutMapping("/{id}")
-    public NotaModel atualizar(@PathVariable Long id, @RequestBody @Valid NotaModel nota) {
-        return notaService.atualizar(id, nota);
+    public NotaModel atualizar(@PathVariable Long id, @RequestBody @Valid NotaRequestDTO notaDTO) {
+        return notaService.atualizar(id, notaDTO);
     }
 
     @DeleteMapping("/{id}")

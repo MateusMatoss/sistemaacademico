@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.dto.DisciplinaRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.CursoModel;
 import br.com.sistemaacademico.model.DisciplinaModel;
@@ -37,16 +38,20 @@ public class DisciplinaService {
                 .orElseThrow(() -> new ResourceNotFoundException("Disciplina não encontrada"));
     }
 
-    public DisciplinaModel salvar(DisciplinaModel disciplina) {
+    public DisciplinaModel salvar(DisciplinaRequestDTO dto) {
+        DisciplinaModel disciplina = new DisciplinaModel();
 
-        if (disciplina.getCurso() != null && disciplina.getCurso().getIdCurso() != null) {
-            CursoModel curso = cursoRepository.findById(disciplina.getCurso().getIdCurso())
+        disciplina.setNomeDisciplina(dto.getNomeDisciplina());
+        disciplina.setCargaHoraria(dto.getCargaHoraria());
+
+        if (dto.getIdCurso() != null) {
+            CursoModel curso = cursoRepository.findById(dto.getIdCurso())
                     .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
             disciplina.setCurso(curso);
         }
 
-        if (disciplina.getProfessor() != null && disciplina.getProfessor().getIdPessoa() != null) {
-            ProfessorModel professor = professorRepository.findById(disciplina.getProfessor().getIdPessoa())
+        if (dto.getIdProfessor() != null) {
+            ProfessorModel professor = professorRepository.findById(dto.getIdProfessor())
                     .orElseThrow(() -> new ResourceNotFoundException("Professor não encontrado"));
             disciplina.setProfessor(professor);
         }
@@ -54,22 +59,26 @@ public class DisciplinaService {
         return disciplinaRepository.save(disciplina);
     }
 
-    public DisciplinaModel atualizar(Long id, DisciplinaModel disciplinaAtualizada) {
+    public DisciplinaModel atualizar(Long id, DisciplinaRequestDTO dto) {
         DisciplinaModel disciplinaExistente = buscarPorId(id);
 
-        disciplinaExistente.setNomeDisciplina(disciplinaAtualizada.getNomeDisciplina());
-        disciplinaExistente.setCargaHoraria(disciplinaAtualizada.getCargaHoraria());
+        disciplinaExistente.setNomeDisciplina(dto.getNomeDisciplina());
+        disciplinaExistente.setCargaHoraria(dto.getCargaHoraria());
 
-        if (disciplinaAtualizada.getCurso() != null && disciplinaAtualizada.getCurso().getIdCurso() != null) {
-            CursoModel curso = cursoRepository.findById(disciplinaAtualizada.getCurso().getIdCurso())
+        if (dto.getIdCurso() != null) {
+            CursoModel curso = cursoRepository.findById(dto.getIdCurso())
                     .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
             disciplinaExistente.setCurso(curso);
+        } else {
+            disciplinaExistente.setCurso(null);
         }
 
-        if (disciplinaAtualizada.getProfessor() != null && disciplinaAtualizada.getProfessor().getIdPessoa() != null) {
-            ProfessorModel professor = professorRepository.findById(disciplinaAtualizada.getProfessor().getIdPessoa())
+        if (dto.getIdProfessor() != null) {
+            ProfessorModel professor = professorRepository.findById(dto.getIdProfessor())
                     .orElseThrow(() -> new ResourceNotFoundException("Professor não encontrado"));
             disciplinaExistente.setProfessor(professor);
+        } else {
+            disciplinaExistente.setProfessor(null);
         }
 
         return disciplinaRepository.save(disciplinaExistente);

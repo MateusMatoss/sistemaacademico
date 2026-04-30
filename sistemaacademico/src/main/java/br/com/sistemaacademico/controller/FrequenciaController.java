@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.FrequenciaRequestDTO;
 import br.com.sistemaacademico.model.FrequenciaModel;
 import br.com.sistemaacademico.service.FrequenciaService;
 import jakarta.validation.Valid;
@@ -28,13 +29,13 @@ public class FrequenciaController {
     }
 
     @PostMapping
-    public FrequenciaModel salvar(@RequestBody @Valid FrequenciaModel frequencia) {
-        return frequenciaService.salvar(frequencia);
+    public FrequenciaModel salvar(@RequestBody @Valid FrequenciaRequestDTO frequenciaDTO) {
+        return frequenciaService.salvar(frequenciaDTO);
     }
 
     @PutMapping("/{id}")
-    public FrequenciaModel atualizar(@PathVariable Long id, @RequestBody @Valid FrequenciaModel frequencia) {
-        return frequenciaService.atualizar(id, frequencia);
+    public FrequenciaModel atualizar(@PathVariable Long id, @RequestBody @Valid FrequenciaRequestDTO frequenciaDTO) {
+        return frequenciaService.atualizar(id, frequenciaDTO);
     }
 
     @DeleteMapping("/{id}")

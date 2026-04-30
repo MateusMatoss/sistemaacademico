@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.dto.NotaRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.MatriculaModel;
 import br.com.sistemaacademico.model.NotaModel;
@@ -29,26 +30,27 @@ public class NotaService {
                 .orElseThrow(() -> new ResourceNotFoundException("Nota não encontrada"));
     }
 
-    public NotaModel salvar(NotaModel nota) {
-        MatriculaModel matricula = matriculaRepository.findById(nota.getMatricula().getIdMatricula())
+    public NotaModel salvar(NotaRequestDTO dto) {
+        MatriculaModel matricula = matriculaRepository.findById(dto.getIdMatricula())
                 .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
 
+        NotaModel nota = new NotaModel();
+        nota.setValorNota(dto.getValorNota());
+        nota.setTipoAvaliacao(dto.getTipoAvaliacao());
         nota.setMatricula(matricula);
 
         return notaRepository.save(nota);
     }
 
-    public NotaModel atualizar(Long id, NotaModel notaAtualizada) {
+    public NotaModel atualizar(Long id, NotaRequestDTO dto) {
         NotaModel notaExistente = buscarPorId(id);
 
-        notaExistente.setValorNota(notaAtualizada.getValorNota());
-        notaExistente.setTipoAvaliacao(notaAtualizada.getTipoAvaliacao());
+        MatriculaModel matricula = matriculaRepository.findById(dto.getIdMatricula())
+                .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
 
-        if (notaAtualizada.getMatricula() != null && notaAtualizada.getMatricula().getIdMatricula() != null) {
-            MatriculaModel matricula = matriculaRepository.findById(notaAtualizada.getMatricula().getIdMatricula())
-                    .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
-            notaExistente.setMatricula(matricula);
-        }
+        notaExistente.setValorNota(dto.getValorNota());
+        notaExistente.setTipoAvaliacao(dto.getTipoAvaliacao());
+        notaExistente.setMatricula(matricula);
 
         return notaRepository.save(notaExistente);
     }

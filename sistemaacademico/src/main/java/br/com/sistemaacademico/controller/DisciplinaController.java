@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.DisciplinaRequestDTO;
 import br.com.sistemaacademico.model.DisciplinaModel;
 import br.com.sistemaacademico.service.DisciplinaService;
 import jakarta.validation.Valid;
@@ -28,13 +29,13 @@ public class DisciplinaController {
     }
 
     @PostMapping
-    public DisciplinaModel salvar(@RequestBody @Valid DisciplinaModel disciplina) {
-        return disciplinaService.salvar(disciplina);
+    public DisciplinaModel salvar(@RequestBody @Valid DisciplinaRequestDTO disciplinaDTO) {
+        return disciplinaService.salvar(disciplinaDTO);
     }
 
     @PutMapping("/{id}")
-    public DisciplinaModel atualizar(@PathVariable Long id, @RequestBody @Valid DisciplinaModel disciplina) {
-        return disciplinaService.atualizar(id, disciplina);
+    public DisciplinaModel atualizar(@PathVariable Long id, @RequestBody @Valid DisciplinaRequestDTO disciplinaDTO) {
+        return disciplinaService.atualizar(id, disciplinaDTO);
     }
 
     @DeleteMapping("/{id}")

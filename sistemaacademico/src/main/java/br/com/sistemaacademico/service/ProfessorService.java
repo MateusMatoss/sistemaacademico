@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.dto.ProfessorRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.ProfessorModel;
 import br.com.sistemaacademico.repository.ProfessorRepository;
@@ -25,18 +26,26 @@ public class ProfessorService {
                 .orElseThrow(() -> new ResourceNotFoundException("Professor não encontrado"));
     }
 
-    public ProfessorModel salvar(ProfessorModel professor) {
+    public ProfessorModel salvar(ProfessorRequestDTO dto) {
+        ProfessorModel professor = new ProfessorModel();
+
+        professor.setNomePessoa(dto.getNomePessoa());
+        professor.setCpfPessoa(dto.getCpfPessoa());
+        professor.setEmailPessoa(dto.getEmailPessoa());
+        professor.setFormacaoProfessor(dto.getFormacaoProfessor());
+        professor.setTitulacaoProfessor(dto.getTitulacaoProfessor());
+
         return professorRepository.save(professor);
     }
 
-    public ProfessorModel atualizar(Long id, ProfessorModel professorAtualizado) {
+    public ProfessorModel atualizar(Long id, ProfessorRequestDTO dto) {
         ProfessorModel professorExistente = buscarPorId(id);
 
-        professorExistente.setNomePessoa(professorAtualizado.getNomePessoa());
-        professorExistente.setCpfPessoa(professorAtualizado.getCpfPessoa());
-        professorExistente.setEmailPessoa(professorAtualizado.getEmailPessoa());
-        professorExistente.setFormacaoProfessor(professorAtualizado.getFormacaoProfessor());
-        professorExistente.setTitulacaoProfessor(professorAtualizado.getTitulacaoProfessor());
+        professorExistente.setNomePessoa(dto.getNomePessoa());
+        professorExistente.setCpfPessoa(dto.getCpfPessoa());
+        professorExistente.setEmailPessoa(dto.getEmailPessoa());
+        professorExistente.setFormacaoProfessor(dto.getFormacaoProfessor());
+        professorExistente.setTitulacaoProfessor(dto.getTitulacaoProfessor());
 
         return professorRepository.save(professorExistente);
     }

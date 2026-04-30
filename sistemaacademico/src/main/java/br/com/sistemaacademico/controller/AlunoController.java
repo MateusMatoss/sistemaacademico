@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.AlunoRequestDTO;
 import br.com.sistemaacademico.model.AlunoModel;
 import br.com.sistemaacademico.service.AlunoService;
 import jakarta.validation.Valid;
@@ -28,13 +29,13 @@ public class AlunoController {
     }
 
     @PostMapping
-    public AlunoModel salvar(@RequestBody @Valid AlunoModel aluno) {
-        return alunoService.salvar(aluno);
+    public AlunoModel salvar(@RequestBody @Valid AlunoRequestDTO alunoDTO) {
+        return alunoService.salvar(alunoDTO);
     }
 
     @PutMapping("/{id}")
-    public AlunoModel atualizar(@PathVariable Long id, @RequestBody @Valid AlunoModel aluno) {
-        return alunoService.atualizar(id, aluno);
+    public AlunoModel atualizar(@PathVariable Long id, @RequestBody @Valid AlunoRequestDTO alunoDTO) {
+        return alunoService.atualizar(id, alunoDTO);
     }
 
     @DeleteMapping("/{id}")

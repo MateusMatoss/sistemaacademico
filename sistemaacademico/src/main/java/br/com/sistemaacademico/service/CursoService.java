@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.dto.CursoRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.CursoModel;
 import br.com.sistemaacademico.repository.CursoRepository;
@@ -25,15 +26,20 @@ public class CursoService {
                 .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
     }
 
-    public CursoModel salvar(CursoModel curso) {
+    public CursoModel salvar(CursoRequestDTO dto) {
+        CursoModel curso = new CursoModel();
+
+        curso.setNomeCurso(dto.getNomeCurso());
+        curso.setDescricaoCurso(dto.getDescricaoCurso());
+
         return cursoRepository.save(curso);
     }
 
-    public CursoModel atualizar(Long id, CursoModel cursoAtualizado) {
+    public CursoModel atualizar(Long id, CursoRequestDTO dto) {
         CursoModel cursoExistente = buscarPorId(id);
 
-        cursoExistente.setNomeCurso(cursoAtualizado.getNomeCurso());
-        cursoExistente.setDescricaoCurso(cursoAtualizado.getDescricaoCurso());
+        cursoExistente.setNomeCurso(dto.getNomeCurso());
+        cursoExistente.setDescricaoCurso(dto.getDescricaoCurso());
 
         return cursoRepository.save(cursoExistente);
     }
