@@ -35,7 +35,7 @@ public class SecurityConfig {
                         ).permitAll()
 
                         .requestMatchers("/dashboard/**").hasRole("ADMIN")
-
+                        .requestMatchers("/logs-acesso/**").hasRole("ADMIN")
                         .requestMatchers("/alunos/**").hasAnyRole("ADMIN", "PROFESSOR", "ALUNO")
                         .requestMatchers("/professores/**").hasAnyRole("ADMIN", "PROFESSOR")
                         .requestMatchers("/cursos/**").hasAnyRole("ADMIN", "PROFESSOR")
