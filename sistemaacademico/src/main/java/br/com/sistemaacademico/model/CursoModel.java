@@ -26,4 +26,8 @@ public class CursoModel {
     @JsonIgnore
     @OneToMany(mappedBy = "curso")
     private List<AlunoModel> alunos;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "curso")
+    private List<DisciplinaModel> disciplinas;
 }

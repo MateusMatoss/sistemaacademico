@@ -1,8 +1,10 @@
 package br.com.sistemaacademico.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "professores")
@@ -16,4 +18,8 @@ public class ProfessorModel extends PessoaModel {
     private String formacaoProfessor;
 
     private String titulacaoProfessor;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "professor")
+    private List<DisciplinaModel> disciplinas;
 }
