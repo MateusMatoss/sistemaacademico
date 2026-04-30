@@ -2,6 +2,10 @@ package br.com.sistemaacademico.controller;
 
 import br.com.sistemaacademico.model.LogAcessoModel;
 import br.com.sistemaacademico.service.LogAcessoService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +25,17 @@ public class LogAcessoController {
     @GetMapping
     public List<LogAcessoModel> listarTodos() {
         return logAcessoService.listarTodos();
+    }
+
+    @GetMapping("/paginado")
+    public Page<LogAcessoModel> listarPaginado(
+            @PageableDefault(
+                    size = 10,
+                    sort = "dataHoraLogin",
+                    direction = Sort.Direction.DESC
+            ) Pageable pageable
+    ) {
+        return logAcessoService.listarPaginado(pageable);
     }
 
     @GetMapping("/usuario/{username}")

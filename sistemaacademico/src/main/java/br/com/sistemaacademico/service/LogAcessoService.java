@@ -2,6 +2,8 @@ package br.com.sistemaacademico.service;
 
 import br.com.sistemaacademico.model.LogAcessoModel;
 import br.com.sistemaacademico.repository.LogAcessoRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -19,6 +21,10 @@ public class LogAcessoService {
 
     public List<LogAcessoModel> listarTodos() {
         return logAcessoRepository.findAll();
+    }
+
+    public Page<LogAcessoModel> listarPaginado(Pageable pageable) {
+        return logAcessoRepository.findAll(pageable);
     }
 
     public List<LogAcessoModel> listarPorUsername(String username) {
