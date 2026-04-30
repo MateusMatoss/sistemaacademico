@@ -2,6 +2,7 @@ package br.com.sistemaacademico.service;
 
 import br.com.sistemaacademico.dto.LoginDTO;
 import br.com.sistemaacademico.dto.UsuarioRegistroDTO;
+import br.com.sistemaacademico.exception.BusinessException;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.PerfilUsuario;
 import br.com.sistemaacademico.model.UsuarioModel;
@@ -48,7 +49,7 @@ public class AuthService {
                 .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado"));
 
         if (!passwordEncoder.matches(dto.getPassword(), usuario.getPassword())) {
-            throw new RuntimeException("Senha inválida");
+            throw new BusinessException("Senha inválida");
         }
 
         String token = jwtService.gerarToken(usuario.getUsername());
