@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import br.com.sistemaacademico.dto.CursoRequestDTO;
 import br.com.sistemaacademico.dto.CursoResumoDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
@@ -35,6 +37,10 @@ public class CursoService {
     public CursoModel buscarPorId(Long id) {
         return cursoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
+    }
+
+    public Page<CursoModel> listarPaginado(Pageable pageable) {
+        return cursoRepository.findAll(pageable);
     }
 
     public CursoModel salvar(CursoRequestDTO dto) {

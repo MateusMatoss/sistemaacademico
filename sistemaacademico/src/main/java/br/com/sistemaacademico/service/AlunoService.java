@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import br.com.sistemaacademico.dto.AlunoRequestDTO;
 import br.com.sistemaacademico.dto.AlunoResumoDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
@@ -38,6 +40,10 @@ public class AlunoService {
         this.matriculaRepository = matriculaRepository;
         this.notaRepository = notaRepository;
         this.frequenciaRepository = frequenciaRepository;
+    }
+
+    public Page<AlunoModel> listarPaginado(Pageable pageable) {
+        return alunoRepository.findAll(pageable);
     }
 
     public List<AlunoModel> listarTodos() {

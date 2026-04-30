@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import br.com.sistemaacademico.dto.DisciplinaRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.CursoModel;
@@ -65,6 +67,10 @@ public class DisciplinaService {
         }
 
         return disciplinaRepository.save(disciplina);
+    }
+
+    public Page<DisciplinaModel> listarPaginado(Pageable pageable) {
+        return disciplinaRepository.findAll(pageable);
     }
 
     public DisciplinaModel atualizar(Long id, DisciplinaRequestDTO dto) {

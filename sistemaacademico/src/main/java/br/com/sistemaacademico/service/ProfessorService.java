@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import br.com.sistemaacademico.dto.ProfessorRequestDTO;
 import br.com.sistemaacademico.dto.ProfessorResumoDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
@@ -56,6 +58,10 @@ public class ProfessorService {
         professorExistente.setTitulacaoProfessor(dto.getTitulacaoProfessor());
 
         return professorRepository.save(professorExistente);
+    }
+
+    public Page<ProfessorModel> listarPaginado(Pageable pageable) {
+        return professorRepository.findAll(pageable);
     }
 
     public void deletar(Long id) {

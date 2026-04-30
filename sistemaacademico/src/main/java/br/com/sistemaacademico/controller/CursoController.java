@@ -5,6 +5,10 @@ import br.com.sistemaacademico.dto.CursoResumoDTO;
 import br.com.sistemaacademico.model.CursoModel;
 import br.com.sistemaacademico.service.CursoService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +28,19 @@ public class CursoController {
         return cursoService.listarTodos();
     }
 
+    @GetMapping("/paginado")
+    public Page<CursoModel> listarPaginado(
+            @PageableDefault(size = 10, sort = "nomeCurso", direction = Sort.Direction.ASC) Pageable pageable
+    ) {
+        return cursoService.listarPaginado(pageable);
+    }
+
     @GetMapping("/{id}")
     public CursoModel buscarPorId(@PathVariable Long id) {
         return cursoService.buscarPorId(id);
     }
 
-    @GetMapping("/{id}/resumo")
+    @GetMapping("/resumo/{id}")
     public CursoResumoDTO gerarResumoCurso(@PathVariable Long id) {
         return cursoService.gerarResumoCurso(id);
     }

@@ -5,6 +5,10 @@ import br.com.sistemaacademico.dto.ProfessorResumoDTO;
 import br.com.sistemaacademico.model.ProfessorModel;
 import br.com.sistemaacademico.service.ProfessorService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +28,19 @@ public class ProfessorController {
         return professorService.listarTodos();
     }
 
+    @GetMapping("/paginado")
+    public Page<ProfessorModel> listarPaginado(
+            @PageableDefault(size = 10, sort = "nomePessoa", direction = Sort.Direction.ASC) Pageable pageable
+    ) {
+        return professorService.listarPaginado(pageable);
+    }
+
     @GetMapping("/{id}")
     public ProfessorModel buscarPorId(@PathVariable Long id) {
         return professorService.buscarPorId(id);
     }
 
-    @GetMapping("/{id}/resumo")
+    @GetMapping("/resumo/{id}")
     public List<ProfessorResumoDTO> gerarResumoProfessor(@PathVariable Long id) {
         return professorService.gerarResumoProfessor(id);
     }
