@@ -20,4 +20,9 @@ public class LogAcessoController {
     public List<LogAcessoModel> listarTodos() {
         return logAcessoService.listarTodos();
     }
+
+    @GetMapping("/usuario/{username}")
+    public List<LogAcessoModel> listarPorUsername(@PathVariable String username) {
+        return logAcessoService.listarPorUsername(username);
+    }
 }

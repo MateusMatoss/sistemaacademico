@@ -18,4 +18,8 @@ public class LogAcessoService {
     public List<LogAcessoModel> listarTodos() {
         return logAcessoRepository.findAll();
     }
+
+    public List<LogAcessoModel> listarPorUsername(String username) {
+        return logAcessoRepository.findByUsername(username);
+    }
 }
