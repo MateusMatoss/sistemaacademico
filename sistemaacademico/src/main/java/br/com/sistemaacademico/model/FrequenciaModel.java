@@ -1,6 +1,7 @@
 package br.com.sistemaacademico.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -20,6 +21,7 @@ public class FrequenciaModel {
 
     private LocalDate dataAula;
 
+    @NotNull(message = "Informe se o aluno está presente ou ausente")
     private Boolean presente;
 
     @ManyToOne

@@ -2,6 +2,7 @@ package br.com.sistemaacademico.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class AlunoModel extends PessoaModel {
 
+    @NotBlank(message = "O RA do aluno é obrigatório")
     private String raAluno;
 
     @ManyToOne

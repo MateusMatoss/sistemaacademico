@@ -2,6 +2,7 @@ package br.com.sistemaacademico.controller;
 
 import br.com.sistemaacademico.model.NotaModel;
 import br.com.sistemaacademico.service.NotaService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,12 +28,12 @@ public class NotaController {
     }
 
     @PostMapping
-    public NotaModel salvar(@RequestBody NotaModel nota) {
+    public NotaModel salvar(@RequestBody @Valid NotaModel nota) {
         return notaService.salvar(nota);
     }
 
     @PutMapping("/{id}")
-    public NotaModel atualizar(@PathVariable Long id, @RequestBody NotaModel nota) {
+    public NotaModel atualizar(@PathVariable Long id, @RequestBody @Valid NotaModel nota) {
         return notaService.atualizar(id, nota);
     }
 

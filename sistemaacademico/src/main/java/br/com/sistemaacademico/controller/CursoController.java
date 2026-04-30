@@ -2,6 +2,7 @@ package br.com.sistemaacademico.controller;
 
 import br.com.sistemaacademico.model.CursoModel;
 import br.com.sistemaacademico.service.CursoService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,12 +28,12 @@ public class CursoController {
     }
 
     @PostMapping
-    public CursoModel salvar(@RequestBody CursoModel curso) {
+    public CursoModel salvar(@RequestBody @Valid CursoModel curso) {
         return cursoService.salvar(curso);
     }
 
     @PutMapping("/{id}")
-    public CursoModel atualizar(@PathVariable Long id, @RequestBody CursoModel curso) {
+    public CursoModel atualizar(@PathVariable Long id, @RequestBody @Valid CursoModel curso) {
         return cursoService.atualizar(id, curso);
     }
 

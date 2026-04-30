@@ -38,6 +38,7 @@ public class DisciplinaService {
     }
 
     public DisciplinaModel salvar(DisciplinaModel disciplina) {
+
         if (disciplina.getCurso() != null && disciplina.getCurso().getIdCurso() != null) {
             CursoModel curso = cursoRepository.findById(disciplina.getCurso().getIdCurso())
                     .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
@@ -57,9 +58,7 @@ public class DisciplinaService {
         DisciplinaModel disciplinaExistente = buscarPorId(id);
 
         disciplinaExistente.setNomeDisciplina(disciplinaAtualizada.getNomeDisciplina());
-        disciplinaExistente.setNotaDisciplina(disciplinaAtualizada.getNotaDisciplina());
         disciplinaExistente.setCargaHoraria(disciplinaAtualizada.getCargaHoraria());
-        disciplinaExistente.setPresencaDisciplina(disciplinaAtualizada.getPresencaDisciplina());
 
         if (disciplinaAtualizada.getCurso() != null && disciplinaAtualizada.getCurso().getIdCurso() != null) {
             CursoModel curso = cursoRepository.findById(disciplinaAtualizada.getCurso().getIdCurso())

@@ -12,7 +12,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-
 @Inheritance(strategy = InheritanceType.JOINED)
 public class PessoaModel {
 
@@ -20,12 +19,14 @@ public class PessoaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPessoa;
 
-    @NotBlank(message = "Nome é obrigatório")
+    @NotBlank(message = "O nome é obrigatório")
     private String nomePessoa;
 
+    @NotBlank(message = "O CPF é obrigatório")
     @Column(unique = true)
     private String cpfPessoa;
 
-    @Email(message = "Email inválido")
+    @NotBlank(message = "O e-mail é obrigatório")
+    @Email(message = "Informe um e-mail válido")
     private String emailPessoa;
 }

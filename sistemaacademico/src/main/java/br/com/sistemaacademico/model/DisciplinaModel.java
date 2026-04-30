@@ -2,6 +2,8 @@ package br.com.sistemaacademico.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.List;
@@ -19,13 +21,11 @@ public class DisciplinaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDisciplina;
 
+    @NotBlank(message = "O nome da disciplina é obrigatório")
     private String nomeDisciplina;
 
-    private Double notaDisciplina;
-
+    @Min(value = 1, message = "A carga horária deve ser maior que zero")
     private Integer cargaHoraria;
-
-    private Integer presencaDisciplina;
 
     @ManyToOne
     @JoinColumn(name = "id_curso")

@@ -2,6 +2,7 @@ package br.com.sistemaacademico.controller;
 
 import br.com.sistemaacademico.model.FrequenciaModel;
 import br.com.sistemaacademico.service.FrequenciaService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,12 +28,12 @@ public class FrequenciaController {
     }
 
     @PostMapping
-    public FrequenciaModel salvar(@RequestBody FrequenciaModel frequencia) {
+    public FrequenciaModel salvar(@RequestBody @Valid FrequenciaModel frequencia) {
         return frequenciaService.salvar(frequencia);
     }
 
     @PutMapping("/{id}")
-    public FrequenciaModel atualizar(@PathVariable Long id, @RequestBody FrequenciaModel frequencia) {
+    public FrequenciaModel atualizar(@PathVariable Long id, @RequestBody @Valid FrequenciaModel frequencia) {
         return frequenciaService.atualizar(id, frequencia);
     }
 

@@ -2,6 +2,7 @@ package br.com.sistemaacademico.controller;
 
 import br.com.sistemaacademico.model.MatriculaModel;
 import br.com.sistemaacademico.service.MatriculaService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,12 +28,12 @@ public class MatriculaController {
     }
 
     @PostMapping
-    public MatriculaModel salvar(@RequestBody MatriculaModel matricula) {
+    public MatriculaModel salvar(@RequestBody @Valid MatriculaModel matricula) {
         return matriculaService.salvar(matricula);
     }
 
     @PutMapping("/{id}")
-    public MatriculaModel atualizar(@PathVariable Long id, @RequestBody MatriculaModel matricula) {
+    public MatriculaModel atualizar(@PathVariable Long id, @RequestBody @Valid MatriculaModel matricula) {
         return matriculaService.atualizar(id, matricula);
     }
 
