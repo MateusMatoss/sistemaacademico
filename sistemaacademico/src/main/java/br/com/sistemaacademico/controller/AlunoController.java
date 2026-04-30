@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.AlunoResumoDTO;
 import br.com.sistemaacademico.dto.AlunoRequestDTO;
 import br.com.sistemaacademico.model.AlunoModel;
 import br.com.sistemaacademico.service.AlunoService;
@@ -16,6 +17,11 @@ public class AlunoController {
 
     public AlunoController(AlunoService alunoService) {
         this.alunoService = alunoService;
+    }
+
+    @GetMapping("/{id}/resumo")
+    public List<AlunoResumoDTO> gerarResumoAluno(@PathVariable Long id) {
+        return alunoService.gerarResumoAluno(id);
     }
 
     @GetMapping("/curso/{idCurso}")
