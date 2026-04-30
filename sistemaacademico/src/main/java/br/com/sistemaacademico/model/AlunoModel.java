@@ -1,12 +1,7 @@
 package br.com.sistemaacademico.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name = "alunos")
@@ -19,4 +14,7 @@ public class AlunoModel extends PessoaModel {
 
     private String raAluno;
 
+    @ManyToOne
+    @JoinColumn(name = "id_curso")
+    private CursoModel curso;
 }
