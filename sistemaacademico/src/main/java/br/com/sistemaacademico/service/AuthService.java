@@ -30,6 +30,11 @@ public class AuthService {
     }
 
     public UsuarioModel registrar(UsuarioRegistroDTO dto) {
+
+        if (usuarioRepository.findByUsername(dto.getUsername()).isPresent()) {
+            throw new BusinessException("Já existe um usuário cadastrado com esse username");
+        }
+
         UsuarioModel usuario = new UsuarioModel();
 
         usuario.setUsername(dto.getUsername());
