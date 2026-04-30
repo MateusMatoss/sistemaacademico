@@ -59,4 +59,9 @@ public class ProfessorController {
     public void deletar(@PathVariable Long id) {
         professorService.deletar(id);
     }
+
+    @GetMapping("/buscar")
+    public List<ProfessorModel> buscarPorNome(@RequestParam String nome) {
+        return professorService.buscarPorNome(nome);
+    }
 }

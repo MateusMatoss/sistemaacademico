@@ -14,4 +14,6 @@ public interface DisciplinaRepository extends JpaRepository<DisciplinaModel, Lon
     List<DisciplinaModel> findByProfessorIdPessoa(Long idProfessor);
 
     Long countByCursoIdCurso(Long idCurso);
+
+    List<DisciplinaModel> findByNomeDisciplinaContainingIgnoreCase(String nomeDisciplina);
 }

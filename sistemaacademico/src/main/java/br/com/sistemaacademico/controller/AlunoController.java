@@ -68,4 +68,9 @@ public class AlunoController {
     public void deletar(@PathVariable Long id) {
         alunoService.deletar(id);
     }
+
+    @GetMapping("/buscar")
+    public List<AlunoModel> buscarPorNome(@RequestParam String nome) {
+        return alunoService.buscarPorNome(nome);
+    }
 }

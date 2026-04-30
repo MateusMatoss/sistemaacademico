@@ -12,4 +12,6 @@ public interface AlunoRepository extends JpaRepository<AlunoModel, Long> {
     List<AlunoModel> findByCursoIdCurso(Long idCurso);
 
     Long countByCursoIdCurso(Long idCurso);
+
+    List<AlunoModel> findByNomePessoaContainingIgnoreCase(String nomePessoa);
 }

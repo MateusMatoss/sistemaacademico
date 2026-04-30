@@ -55,6 +55,10 @@ public class AlunoService {
                 .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
     }
 
+    public List<AlunoModel> buscarPorNome(String nome) {
+        return alunoRepository.findByNomePessoaContainingIgnoreCase(nome);
+    }
+
     public List<AlunoModel> listarPorCurso(Long idCurso) {
         return alunoRepository.findByCursoIdCurso(idCurso);
     }

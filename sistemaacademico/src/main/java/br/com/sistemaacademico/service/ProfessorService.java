@@ -64,6 +64,10 @@ public class ProfessorService {
         return professorRepository.findAll(pageable);
     }
 
+    public List<ProfessorModel> buscarPorNome(String nome) {
+        return professorRepository.findByNomePessoaContainingIgnoreCase(nome);
+    }
+
     public void deletar(Long id) {
         ProfessorModel professor = buscarPorId(id);
         professorRepository.delete(professor);

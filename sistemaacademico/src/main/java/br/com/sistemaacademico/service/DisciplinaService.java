@@ -73,6 +73,10 @@ public class DisciplinaService {
         return disciplinaRepository.findAll(pageable);
     }
 
+    public List<DisciplinaModel> buscarPorNome(String nome) {
+        return disciplinaRepository.findByNomeDisciplinaContainingIgnoreCase(nome);
+    }
+
     public DisciplinaModel atualizar(Long id, DisciplinaRequestDTO dto) {
         DisciplinaModel disciplinaExistente = buscarPorId(id);
 

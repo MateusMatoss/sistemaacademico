@@ -59,4 +59,9 @@ public class CursoController {
     public void deletar(@PathVariable Long id) {
         cursoService.deletar(id);
     }
+
+    @GetMapping("/buscar")
+    public List<CursoModel> buscarPorNome(@RequestParam String nome) {
+        return cursoService.buscarPorNome(nome);
+    }
 }

@@ -43,6 +43,10 @@ public class CursoService {
         return cursoRepository.findAll(pageable);
     }
 
+    public List<CursoModel> buscarPorNome(String nome) {
+        return cursoRepository.findByNomeCursoContainingIgnoreCase(nome);
+    }
+
     public CursoModel salvar(CursoRequestDTO dto) {
         CursoModel curso = new CursoModel();
 
