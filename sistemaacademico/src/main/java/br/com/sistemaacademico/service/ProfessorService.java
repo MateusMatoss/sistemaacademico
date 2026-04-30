@@ -68,6 +68,11 @@ public class ProfessorService {
         return professorRepository.findByNomePessoaContainingIgnoreCase(nome);
     }
 
+    public ProfessorModel buscarPorCpf(String cpf) {
+        return professorRepository.findByCpfPessoa(cpf)
+                .orElseThrow(() -> new ResourceNotFoundException("Professor não encontrado pelo CPF informado"));
+    }
+
     public void deletar(Long id) {
         ProfessorModel professor = buscarPorId(id);
         professorRepository.delete(professor);

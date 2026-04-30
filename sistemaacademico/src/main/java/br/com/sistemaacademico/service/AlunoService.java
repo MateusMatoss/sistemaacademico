@@ -63,6 +63,16 @@ public class AlunoService {
         return alunoRepository.findByCursoIdCurso(idCurso);
     }
 
+    public AlunoModel buscarPorCpf(String cpf) {
+        return alunoRepository.findByCpfPessoa(cpf)
+                .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado pelo CPF informado"));
+    }
+
+    public AlunoModel buscarPorRa(String ra) {
+        return alunoRepository.findByRaAluno(ra)
+                .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado pelo RA informado"));
+    }
+
     public AlunoModel salvar(AlunoRequestDTO dto) {
         AlunoModel aluno = new AlunoModel();
 

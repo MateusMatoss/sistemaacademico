@@ -64,4 +64,9 @@ public class ProfessorController {
     public List<ProfessorModel> buscarPorNome(@RequestParam String nome) {
         return professorService.buscarPorNome(nome);
     }
+
+    @GetMapping("/cpf/{cpf}")
+    public ProfessorModel buscarPorCpf(@PathVariable String cpf) {
+        return professorService.buscarPorCpf(cpf);
+    }
 }

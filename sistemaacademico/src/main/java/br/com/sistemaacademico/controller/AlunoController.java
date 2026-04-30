@@ -73,4 +73,14 @@ public class AlunoController {
     public List<AlunoModel> buscarPorNome(@RequestParam String nome) {
         return alunoService.buscarPorNome(nome);
     }
+
+    @GetMapping("/cpf/{cpf}")
+    public AlunoModel buscarPorCpf(@PathVariable String cpf) {
+        return alunoService.buscarPorCpf(cpf);
+    }
+
+    @GetMapping("/ra/{ra}")
+    public AlunoModel buscarPorRa(@PathVariable String ra) {
+        return alunoService.buscarPorRa(ra);
+    }
 }

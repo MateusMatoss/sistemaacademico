@@ -63,7 +63,7 @@ public class DisciplinaController {
     public void deletar(@PathVariable Long id) {
         disciplinaService.deletar(id);
     }
-    
+
     @GetMapping("/buscar")
     public List<DisciplinaModel> buscarPorNome(@RequestParam String nome) {
         return disciplinaService.buscarPorNome(nome);
