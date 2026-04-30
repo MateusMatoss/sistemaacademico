@@ -1,6 +1,7 @@
 package br.com.sistemaacademico.controller;
 
 import br.com.sistemaacademico.dto.CursoRequestDTO;
+import br.com.sistemaacademico.dto.CursoResumoDTO;
 import br.com.sistemaacademico.model.CursoModel;
 import br.com.sistemaacademico.service.CursoService;
 import jakarta.validation.Valid;
@@ -26,6 +27,11 @@ public class CursoController {
     @GetMapping("/{id}")
     public CursoModel buscarPorId(@PathVariable Long id) {
         return cursoService.buscarPorId(id);
+    }
+
+    @GetMapping("/{id}/resumo")
+    public CursoResumoDTO gerarResumoCurso(@PathVariable Long id) {
+        return cursoService.gerarResumoCurso(id);
     }
 
     @PostMapping

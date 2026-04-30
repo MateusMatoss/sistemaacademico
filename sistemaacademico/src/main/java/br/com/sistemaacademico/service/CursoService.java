@@ -1,9 +1,12 @@
 package br.com.sistemaacademico.service;
 
 import br.com.sistemaacademico.dto.CursoRequestDTO;
+import br.com.sistemaacademico.dto.CursoResumoDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.CursoModel;
+import br.com.sistemaacademico.repository.AlunoRepository;
 import br.com.sistemaacademico.repository.CursoRepository;
+import br.com.sistemaacademico.repository.DisciplinaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +15,17 @@ import java.util.List;
 public class CursoService {
 
     private final CursoRepository cursoRepository;
+    private final AlunoRepository alunoRepository;
+    private final DisciplinaRepository disciplinaRepository;
 
-    public CursoService(CursoRepository cursoRepository) {
+    public CursoService(
+            CursoRepository cursoRepository,
+            AlunoRepository alunoRepository,
+            DisciplinaRepository disciplinaRepository
+    ) {
         this.cursoRepository = cursoRepository;
+        this.alunoRepository = alunoRepository;
+        this.disciplinaRepository = disciplinaRepository;
     }
 
     public List<CursoModel> listarTodos() {
@@ -47,5 +58,20 @@ public class CursoService {
     public void deletar(Long id) {
         CursoModel curso = buscarPorId(id);
         cursoRepository.delete(curso);
+    }
+
+    public CursoResumoDTO gerarResumoCurso(Long idCurso) {
+        CursoModel curso = buscarPorId(idCurso);
+
+        Long totalAlunos = alunoRepository.countByCursoIdCurso(idCurso);
+        Long totalDisciplinas = disciplinaRepository.countByCursoIdCurso(idCurso);
+
+        return new CursoResumoDTO(
+                curso.getIdCurso(),
+                curso.getNomeCurso(),
+                curso.getDescricaoCurso(),
+                totalAlunos,
+                totalDisciplinas
+        );
     }
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface AlunoRepository extends JpaRepository<AlunoModel, Long> {
 
     List<AlunoModel> findByCursoIdCurso(Long idCurso);
+
+    Long countByCursoIdCurso(Long idCurso);
 }
