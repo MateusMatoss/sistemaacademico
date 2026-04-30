@@ -2,6 +2,10 @@ package br.com.sistemaacademico.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "usuarios")
@@ -22,4 +26,11 @@ public class UsuarioModel {
 
     @Enumerated(EnumType.STRING)
     private PerfilUsuario perfil;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime dataCriacao;
+
+    @UpdateTimestamp
+    private LocalDateTime dataAtualizacao;
 }

@@ -3,8 +3,11 @@ package br.com.sistemaacademico.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -37,4 +40,11 @@ public class MatriculaModel {
     @JsonIgnore
     @OneToMany(mappedBy = "matricula")
     private List<FrequenciaModel> frequencias;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime dataCriacao;
+
+    @UpdateTimestamp
+    private LocalDateTime dataAtualizacao;
 }
