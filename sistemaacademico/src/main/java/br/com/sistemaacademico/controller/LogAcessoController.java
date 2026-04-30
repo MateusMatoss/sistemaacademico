@@ -25,4 +25,9 @@ public class LogAcessoController {
     public List<LogAcessoModel> listarPorUsername(@PathVariable String username) {
         return logAcessoService.listarPorUsername(username);
     }
+
+    @GetMapping("/perfil/{perfil}")
+    public List<LogAcessoModel> listarPorPerfil(@PathVariable String perfil) {
+        return logAcessoService.listarPorPerfil(perfil);
+    }
 }

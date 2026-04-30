@@ -22,4 +22,8 @@ public class LogAcessoService {
     public List<LogAcessoModel> listarPorUsername(String username) {
         return logAcessoRepository.findByUsername(username);
     }
+
+    public List<LogAcessoModel> listarPorPerfil(String perfil) {
+        return logAcessoRepository.findByPerfil(perfil.toUpperCase());
+    }
 }

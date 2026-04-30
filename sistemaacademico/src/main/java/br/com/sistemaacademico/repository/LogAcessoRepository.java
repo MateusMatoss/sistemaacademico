@@ -10,4 +10,6 @@ import java.util.List;
 public interface LogAcessoRepository extends JpaRepository<LogAcessoModel, Long> {
 
     List<LogAcessoModel> findByUsername(String username);
+
+    List<LogAcessoModel> findByPerfil(String perfil);
 }
