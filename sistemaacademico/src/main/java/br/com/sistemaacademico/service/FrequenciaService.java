@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.FrequenciaModel;
 import br.com.sistemaacademico.model.MatriculaModel;
 import br.com.sistemaacademico.repository.FrequenciaRepository;
@@ -26,12 +27,12 @@ public class FrequenciaService {
 
     public FrequenciaModel buscarPorId(Long id) {
         return frequenciaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Frequência não encontrada"));
+                .orElseThrow(() -> new ResourceNotFoundException("Frequência não encontrada"));
     }
 
     public FrequenciaModel salvar(FrequenciaModel frequencia) {
         MatriculaModel matricula = matriculaRepository.findById(frequencia.getMatricula().getIdMatricula())
-                .orElseThrow(() -> new RuntimeException("Matrícula não encontrada"));
+                .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
 
         frequencia.setMatricula(matricula);
 
@@ -50,7 +51,7 @@ public class FrequenciaService {
 
         if (frequenciaAtualizada.getMatricula() != null && frequenciaAtualizada.getMatricula().getIdMatricula() != null) {
             MatriculaModel matricula = matriculaRepository.findById(frequenciaAtualizada.getMatricula().getIdMatricula())
-                    .orElseThrow(() -> new RuntimeException("Matrícula não encontrada"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
             frequenciaExistente.setMatricula(matricula);
         }
 

@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.CursoModel;
 import br.com.sistemaacademico.model.DisciplinaModel;
 import br.com.sistemaacademico.model.ProfessorModel;
@@ -33,19 +34,19 @@ public class DisciplinaService {
 
     public DisciplinaModel buscarPorId(Long id) {
         return disciplinaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Disciplina não encontrada"));
+                .orElseThrow(() -> new ResourceNotFoundException("Disciplina não encontrada"));
     }
 
     public DisciplinaModel salvar(DisciplinaModel disciplina) {
         if (disciplina.getCurso() != null && disciplina.getCurso().getIdCurso() != null) {
             CursoModel curso = cursoRepository.findById(disciplina.getCurso().getIdCurso())
-                    .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
             disciplina.setCurso(curso);
         }
 
         if (disciplina.getProfessor() != null && disciplina.getProfessor().getIdPessoa() != null) {
             ProfessorModel professor = professorRepository.findById(disciplina.getProfessor().getIdPessoa())
-                    .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Professor não encontrado"));
             disciplina.setProfessor(professor);
         }
 
@@ -62,13 +63,13 @@ public class DisciplinaService {
 
         if (disciplinaAtualizada.getCurso() != null && disciplinaAtualizada.getCurso().getIdCurso() != null) {
             CursoModel curso = cursoRepository.findById(disciplinaAtualizada.getCurso().getIdCurso())
-                    .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
             disciplinaExistente.setCurso(curso);
         }
 
         if (disciplinaAtualizada.getProfessor() != null && disciplinaAtualizada.getProfessor().getIdPessoa() != null) {
             ProfessorModel professor = professorRepository.findById(disciplinaAtualizada.getProfessor().getIdPessoa())
-                    .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Professor não encontrado"));
             disciplinaExistente.setProfessor(professor);
         }
 

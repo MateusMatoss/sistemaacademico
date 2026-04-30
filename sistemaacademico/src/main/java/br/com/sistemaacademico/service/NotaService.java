@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.MatriculaModel;
 import br.com.sistemaacademico.model.NotaModel;
 import br.com.sistemaacademico.repository.MatriculaRepository;
@@ -25,12 +26,12 @@ public class NotaService {
 
     public NotaModel buscarPorId(Long id) {
         return notaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Nota não encontrada"));
+                .orElseThrow(() -> new ResourceNotFoundException("Nota não encontrada"));
     }
 
     public NotaModel salvar(NotaModel nota) {
         MatriculaModel matricula = matriculaRepository.findById(nota.getMatricula().getIdMatricula())
-                .orElseThrow(() -> new RuntimeException("Matrícula não encontrada"));
+                .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
 
         nota.setMatricula(matricula);
 
@@ -45,7 +46,7 @@ public class NotaService {
 
         if (notaAtualizada.getMatricula() != null && notaAtualizada.getMatricula().getIdMatricula() != null) {
             MatriculaModel matricula = matriculaRepository.findById(notaAtualizada.getMatricula().getIdMatricula())
-                    .orElseThrow(() -> new RuntimeException("Matrícula não encontrada"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
             notaExistente.setMatricula(matricula);
         }
 

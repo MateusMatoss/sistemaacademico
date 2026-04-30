@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.AlunoModel;
 import br.com.sistemaacademico.model.DisciplinaModel;
 import br.com.sistemaacademico.model.MatriculaModel;
@@ -34,15 +35,15 @@ public class MatriculaService {
 
     public MatriculaModel buscarPorId(Long id) {
         return matriculaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Matrícula não encontrada"));
+                .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
     }
 
     public MatriculaModel salvar(MatriculaModel matricula) {
         AlunoModel aluno = alunoRepository.findById(matricula.getAluno().getIdPessoa())
-                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
 
         DisciplinaModel disciplina = disciplinaRepository.findById(matricula.getDisciplina().getIdDisciplina())
-                .orElseThrow(() -> new RuntimeException("Disciplina não encontrada"));
+                .orElseThrow(() -> new ResourceNotFoundException("Disciplina não encontrada"));
 
         matricula.setAluno(aluno);
         matricula.setDisciplina(disciplina);
@@ -63,13 +64,13 @@ public class MatriculaService {
 
         if (matriculaAtualizada.getAluno() != null && matriculaAtualizada.getAluno().getIdPessoa() != null) {
             AlunoModel aluno = alunoRepository.findById(matriculaAtualizada.getAluno().getIdPessoa())
-                    .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
             matriculaExistente.setAluno(aluno);
         }
 
         if (matriculaAtualizada.getDisciplina() != null && matriculaAtualizada.getDisciplina().getIdDisciplina() != null) {
             DisciplinaModel disciplina = disciplinaRepository.findById(matriculaAtualizada.getDisciplina().getIdDisciplina())
-                    .orElseThrow(() -> new RuntimeException("Disciplina não encontrada"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Disciplina não encontrada"));
             matriculaExistente.setDisciplina(disciplina);
         }
 

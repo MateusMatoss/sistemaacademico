@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.AlunoModel;
 import br.com.sistemaacademico.repository.AlunoRepository;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class AlunoService {
 
     public AlunoModel buscarPorId(Long id) {
         return alunoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
     }
 
     public AlunoModel salvar(AlunoModel aluno) {

@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.CursoModel;
 import br.com.sistemaacademico.repository.CursoRepository;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class CursoService {
 
     public CursoModel buscarPorId(Long id) {
         return cursoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
     }
 
     public CursoModel salvar(CursoModel curso) {
