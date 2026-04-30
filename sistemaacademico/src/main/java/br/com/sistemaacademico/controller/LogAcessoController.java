@@ -2,8 +2,10 @@ package br.com.sistemaacademico.controller;
 
 import br.com.sistemaacademico.model.LogAcessoModel;
 import br.com.sistemaacademico.service.LogAcessoService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -29,5 +31,13 @@ public class LogAcessoController {
     @GetMapping("/perfil/{perfil}")
     public List<LogAcessoModel> listarPorPerfil(@PathVariable String perfil) {
         return logAcessoService.listarPorPerfil(perfil);
+    }
+
+    @GetMapping("/periodo")
+    public List<LogAcessoModel> listarPorPeriodo(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fim
+    ) {
+        return logAcessoService.listarPorPeriodo(inicio, fim);
     }
 }
