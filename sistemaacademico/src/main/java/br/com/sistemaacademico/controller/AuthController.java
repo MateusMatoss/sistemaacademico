@@ -1,9 +1,12 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.LoginDTO;
+import br.com.sistemaacademico.dto.UsuarioRegistroDTO;
 import br.com.sistemaacademico.model.PerfilUsuario;
 import br.com.sistemaacademico.model.UsuarioModel;
 import br.com.sistemaacademico.repository.UsuarioRepository;
 import br.com.sistemaacademico.service.JwtService;
+import jakarta.validation.Valid;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,24 +31,29 @@ public class AuthController {
     }
 
     @PostMapping("/registrar")
-    public UsuarioModel registrar(@RequestBody UsuarioModel usuario) {
+    public UsuarioModel registrar(@RequestBody @Valid UsuarioRegistroDTO dto) {
 
-        if (usuario.getPerfil() == null) {
+        UsuarioModel usuario = new UsuarioModel();
+
+        usuario.setUsername(dto.getUsername());
+        usuario.setPassword(passwordEncoder.encode(dto.getPassword()));
+
+        if (dto.getPerfil() == null) {
             usuario.setPerfil(PerfilUsuario.ALUNO);
+        } else {
+            usuario.setPerfil(dto.getPerfil());
         }
-
-        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 
         return usuarioRepository.save(usuario);
     }
 
     @PostMapping("/login")
-    public Map<String, String> login(@RequestBody UsuarioModel usuario) {
+    public Map<String, String> login(@RequestBody @Valid LoginDTO dto) {
 
-        UsuarioModel user = usuarioRepository.findByUsername(usuario.getUsername())
+        UsuarioModel user = usuarioRepository.findByUsername(dto.getUsername())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        if (!passwordEncoder.matches(usuario.getPassword(), user.getPassword())) {
+        if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
             throw new RuntimeException("Senha inválida");
         }
 
