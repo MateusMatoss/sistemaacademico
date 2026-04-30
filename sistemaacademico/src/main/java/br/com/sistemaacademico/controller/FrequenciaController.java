@@ -18,6 +18,11 @@ public class FrequenciaController {
         this.frequenciaService = frequenciaService;
     }
 
+    @GetMapping("/matricula/{idMatricula}")
+    public List<FrequenciaModel> listarPorMatricula(@PathVariable Long idMatricula) {
+        return frequenciaService.listarPorMatricula(idMatricula);
+    }
+
     @GetMapping
     public List<FrequenciaModel> listarTodos() {
         return frequenciaService.listarTodos();

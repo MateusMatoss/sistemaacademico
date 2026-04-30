@@ -18,6 +18,16 @@ public class DisciplinaController {
         this.disciplinaService = disciplinaService;
     }
 
+    @GetMapping("/curso/{idCurso}")
+    public List<DisciplinaModel> listarPorCurso(@PathVariable Long idCurso) {
+        return disciplinaService.listarPorCurso(idCurso);
+    }
+
+    @GetMapping("/professor/{idProfessor}")
+    public List<DisciplinaModel> listarPorProfessor(@PathVariable Long idProfessor) {
+        return disciplinaService.listarPorProfessor(idProfessor);
+    }
+
     @GetMapping
     public List<DisciplinaModel> listarTodos() {
         return disciplinaService.listarTodos();

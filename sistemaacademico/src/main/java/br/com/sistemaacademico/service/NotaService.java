@@ -21,6 +21,10 @@ public class NotaService {
         this.matriculaRepository = matriculaRepository;
     }
 
+    public List<NotaModel> listarPorMatricula(Long idMatricula) {
+        return notaRepository.findByMatriculaIdMatricula(idMatricula);
+    }
+
     public List<NotaModel> listarTodos() {
         return notaRepository.findAll();
     }

@@ -18,6 +18,11 @@ public class AlunoController {
         this.alunoService = alunoService;
     }
 
+    @GetMapping("/curso/{idCurso}")
+    public List<AlunoModel> listarPorCurso(@PathVariable Long idCurso) {
+        return alunoService.listarPorCurso(idCurso);
+    }
+
     @GetMapping
     public List<AlunoModel> listarTodos() {
         return alunoService.listarTodos();

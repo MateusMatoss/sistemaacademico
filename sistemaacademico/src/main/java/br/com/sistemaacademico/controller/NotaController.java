@@ -18,6 +18,11 @@ public class NotaController {
         this.notaService = notaService;
     }
 
+    @GetMapping("/matricula/{idMatricula}")
+    public List<NotaModel> listarPorMatricula(@PathVariable Long idMatricula) {
+        return notaService.listarPorMatricula(idMatricula);
+    }
+
     @GetMapping
     public List<NotaModel> listarTodos() {
         return notaService.listarTodos();

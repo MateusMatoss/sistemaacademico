@@ -22,6 +22,10 @@ public class FrequenciaService {
         this.matriculaRepository = matriculaRepository;
     }
 
+    public List<FrequenciaModel> listarPorMatricula(Long idMatricula) {
+        return frequenciaRepository.findByMatriculaIdMatricula(idMatricula);
+    }
+
     public List<FrequenciaModel> listarTodos() {
         return frequenciaRepository.findAll();
     }

@@ -21,6 +21,10 @@ public class AlunoService {
         this.cursoRepository = cursoRepository;
     }
 
+    public List<AlunoModel> listarPorCurso(Long idCurso) {
+        return alunoRepository.findByCursoIdCurso(idCurso);
+    }
+
     public List<AlunoModel> listarTodos() {
         return alunoRepository.findAll();
     }

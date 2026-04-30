@@ -29,6 +29,14 @@ public class DisciplinaService {
         this.professorRepository = professorRepository;
     }
 
+    public List<DisciplinaModel> listarPorCurso(Long idCurso) {
+        return disciplinaRepository.findByCursoIdCurso(idCurso);
+    }
+
+    public List<DisciplinaModel> listarPorProfessor(Long idProfessor) {
+        return disciplinaRepository.findByProfessorIdPessoa(idProfessor);
+    }
+
     public List<DisciplinaModel> listarTodos() {
         return disciplinaRepository.findAll();
     }
