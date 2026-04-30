@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import br.com.sistemaacademico.dto.MatriculaRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.AlunoModel;
@@ -37,6 +39,10 @@ public class MatriculaService {
     public MatriculaModel buscarPorId(Long id) {
         return matriculaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
+    }
+
+    public Page<MatriculaModel> listarPaginado(Pageable pageable) {
+        return matriculaRepository.findAll(pageable);
     }
 
     public MatriculaModel salvar(MatriculaRequestDTO dto) {

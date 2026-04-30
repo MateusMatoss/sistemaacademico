@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import br.com.sistemaacademico.dto.FrequenciaRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.FrequenciaModel;
@@ -33,6 +35,10 @@ public class FrequenciaService {
     public FrequenciaModel buscarPorId(Long id) {
         return frequenciaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Frequência não encontrada"));
+    }
+
+    public Page<FrequenciaModel> listarPaginado(Pageable pageable) {
+        return frequenciaRepository.findAll(pageable);
     }
 
     public FrequenciaModel salvar(FrequenciaRequestDTO dto) {

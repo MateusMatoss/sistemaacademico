@@ -4,6 +4,10 @@ import br.com.sistemaacademico.dto.MatriculaRequestDTO;
 import br.com.sistemaacademico.model.MatriculaModel;
 import br.com.sistemaacademico.service.MatriculaService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +25,13 @@ public class MatriculaController {
     @GetMapping
     public List<MatriculaModel> listarTodos() {
         return matriculaService.listarTodos();
+    }
+
+    @GetMapping("/paginado")
+    public Page<MatriculaModel> listarPaginado(
+            @PageableDefault(size = 10, sort = "dataMatricula", direction = Sort.Direction.DESC) Pageable pageable
+    ) {
+        return matriculaService.listarPaginado(pageable);
     }
 
     @GetMapping("/{id}")

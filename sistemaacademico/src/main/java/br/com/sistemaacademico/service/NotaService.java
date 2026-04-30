@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import br.com.sistemaacademico.dto.NotaRequestDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.MatriculaModel;
@@ -34,6 +36,7 @@ public class NotaService {
                 .orElseThrow(() -> new ResourceNotFoundException("Nota não encontrada"));
     }
 
+
     public NotaModel salvar(NotaRequestDTO dto) {
         MatriculaModel matricula = matriculaRepository.findById(dto.getIdMatricula())
                 .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
@@ -44,6 +47,10 @@ public class NotaService {
         nota.setMatricula(matricula);
 
         return notaRepository.save(nota);
+    }
+
+    public Page<NotaModel> listarPaginado(Pageable pageable) {
+        return notaRepository.findAll(pageable);
     }
 
     public NotaModel atualizar(Long id, NotaRequestDTO dto) {
