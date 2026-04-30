@@ -19,4 +19,7 @@ public class UsuarioModel {
     private String username;
 
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private PerfilUsuario perfil;
 }

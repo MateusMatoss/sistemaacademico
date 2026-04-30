@@ -55,11 +55,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             String username = jwtService.extrairUsername(token);
 
             usuarioRepository.findByUsername(username).ifPresent(usuario -> {
+                String perfil = "ROLE_" + usuario.getPerfil().name();
+
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(
                                 usuario.getUsername(),
                                 null,
-                                List.of(new SimpleGrantedAuthority("ROLE_USER"))
+                                List.of(new SimpleGrantedAuthority(perfil))
                         );
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);

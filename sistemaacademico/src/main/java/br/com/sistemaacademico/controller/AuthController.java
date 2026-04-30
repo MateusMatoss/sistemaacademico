@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.model.PerfilUsuario;
 import br.com.sistemaacademico.model.UsuarioModel;
 import br.com.sistemaacademico.repository.UsuarioRepository;
 import br.com.sistemaacademico.service.JwtService;
@@ -29,6 +30,10 @@ public class AuthController {
     @PostMapping("/registrar")
     public UsuarioModel registrar(@RequestBody UsuarioModel usuario) {
 
+        if (usuario.getPerfil() == null) {
+            usuario.setPerfil(PerfilUsuario.ALUNO);
+        }
+
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 
         return usuarioRepository.save(usuario);
@@ -46,6 +51,9 @@ public class AuthController {
 
         String token = jwtService.gerarToken(user.getUsername());
 
-        return Map.of("token", token);
+        return Map.of(
+                "token", token,
+                "perfil", user.getPerfil().name()
+        );
     }
 }
