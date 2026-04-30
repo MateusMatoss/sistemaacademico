@@ -1,9 +1,11 @@
 package br.com.sistemaacademico.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "matriculas")
@@ -27,4 +29,12 @@ public class MatriculaModel {
     @ManyToOne
     @JoinColumn(name = "id_disciplina")
     private DisciplinaModel disciplina;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "matricula")
+    private List<NotaModel> notas;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "matricula")
+    private List<FrequenciaModel> frequencias;
 }
