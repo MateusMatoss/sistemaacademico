@@ -5,6 +5,8 @@ import br.com.sistemaacademico.repository.UsuarioRepository;
 import br.com.sistemaacademico.service.JwtService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -18,7 +20,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody UsuarioModel usuario) {
+    public Map<String, String> login(@RequestBody UsuarioModel usuario) {
 
         UsuarioModel user = usuarioRepository.findByUsername(usuario.getUsername())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
@@ -27,6 +29,8 @@ public class AuthController {
             throw new RuntimeException("Senha inválida");
         }
 
-        return jwtService.gerarToken(user.getUsername());
+        String token = jwtService.gerarToken(user.getUsername());
+
+        return Map.of("token", token);
     }
 }
