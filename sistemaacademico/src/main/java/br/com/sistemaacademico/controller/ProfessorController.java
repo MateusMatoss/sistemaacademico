@@ -1,6 +1,7 @@
 package br.com.sistemaacademico.controller;
 
 import br.com.sistemaacademico.dto.ProfessorRequestDTO;
+import br.com.sistemaacademico.dto.ProfessorResumoDTO;
 import br.com.sistemaacademico.model.ProfessorModel;
 import br.com.sistemaacademico.service.ProfessorService;
 import jakarta.validation.Valid;
@@ -26,6 +27,11 @@ public class ProfessorController {
     @GetMapping("/{id}")
     public ProfessorModel buscarPorId(@PathVariable Long id) {
         return professorService.buscarPorId(id);
+    }
+
+    @GetMapping("/{id}/resumo")
+    public List<ProfessorResumoDTO> gerarResumoProfessor(@PathVariable Long id) {
+        return professorService.gerarResumoProfessor(id);
     }
 
     @PostMapping

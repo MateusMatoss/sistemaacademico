@@ -1,8 +1,11 @@
 package br.com.sistemaacademico.service;
 
 import br.com.sistemaacademico.dto.ProfessorRequestDTO;
+import br.com.sistemaacademico.dto.ProfessorResumoDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
+import br.com.sistemaacademico.model.DisciplinaModel;
 import br.com.sistemaacademico.model.ProfessorModel;
+import br.com.sistemaacademico.repository.DisciplinaRepository;
 import br.com.sistemaacademico.repository.ProfessorRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +15,14 @@ import java.util.List;
 public class ProfessorService {
 
     private final ProfessorRepository professorRepository;
+    private final DisciplinaRepository disciplinaRepository;
 
-    public ProfessorService(ProfessorRepository professorRepository) {
+    public ProfessorService(
+            ProfessorRepository professorRepository,
+            DisciplinaRepository disciplinaRepository
+    ) {
         this.professorRepository = professorRepository;
+        this.disciplinaRepository = disciplinaRepository;
     }
 
     public List<ProfessorModel> listarTodos() {
@@ -53,5 +61,27 @@ public class ProfessorService {
     public void deletar(Long id) {
         ProfessorModel professor = buscarPorId(id);
         professorRepository.delete(professor);
+    }
+
+    public List<ProfessorResumoDTO> gerarResumoProfessor(Long idProfessor) {
+        ProfessorModel professor = buscarPorId(idProfessor);
+
+        List<DisciplinaModel> disciplinas = disciplinaRepository.findByProfessorIdPessoa(idProfessor);
+
+        return disciplinas.stream().map(disciplina -> {
+            String nomeCurso = disciplina.getCurso() != null
+                    ? disciplina.getCurso().getNomeCurso()
+                    : "Sem curso";
+
+            return new ProfessorResumoDTO(
+                    professor.getIdPessoa(),
+                    professor.getNomePessoa(),
+                    professor.getFormacaoProfessor(),
+                    professor.getTitulacaoProfessor(),
+                    disciplina.getNomeDisciplina(),
+                    nomeCurso,
+                    disciplina.getCargaHoraria()
+            );
+        }).toList();
     }
 }

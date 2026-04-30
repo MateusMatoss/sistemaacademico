@@ -1,7 +1,7 @@
 package br.com.sistemaacademico.controller;
 
-import br.com.sistemaacademico.dto.AlunoResumoDTO;
 import br.com.sistemaacademico.dto.AlunoRequestDTO;
+import br.com.sistemaacademico.dto.AlunoResumoDTO;
 import br.com.sistemaacademico.model.AlunoModel;
 import br.com.sistemaacademico.service.AlunoService;
 import jakarta.validation.Valid;
@@ -19,16 +19,6 @@ public class AlunoController {
         this.alunoService = alunoService;
     }
 
-    @GetMapping("/{id}/resumo")
-    public List<AlunoResumoDTO> gerarResumoAluno(@PathVariable Long id) {
-        return alunoService.gerarResumoAluno(id);
-    }
-
-    @GetMapping("/curso/{idCurso}")
-    public List<AlunoModel> listarPorCurso(@PathVariable Long idCurso) {
-        return alunoService.listarPorCurso(idCurso);
-    }
-
     @GetMapping
     public List<AlunoModel> listarTodos() {
         return alunoService.listarTodos();
@@ -37,6 +27,16 @@ public class AlunoController {
     @GetMapping("/{id}")
     public AlunoModel buscarPorId(@PathVariable Long id) {
         return alunoService.buscarPorId(id);
+    }
+
+    @GetMapping("/curso/{idCurso}")
+    public List<AlunoModel> listarPorCurso(@PathVariable Long idCurso) {
+        return alunoService.listarPorCurso(idCurso);
+    }
+
+    @GetMapping("/{id}/resumo")
+    public List<AlunoResumoDTO> gerarResumoAluno(@PathVariable Long id) {
+        return alunoService.gerarResumoAluno(id);
     }
 
     @PostMapping
