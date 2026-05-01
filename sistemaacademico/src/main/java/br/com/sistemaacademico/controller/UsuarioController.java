@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.model.PerfilUsuario;
 import br.com.sistemaacademico.dto.AlterarPerfilDTO;
 import br.com.sistemaacademico.dto.AlterarSenhaDTO;
 import br.com.sistemaacademico.dto.UsuarioAtualizacaoDTO;
@@ -24,6 +25,11 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
+    @GetMapping("/perfil/{perfil}")
+    public List<UsuarioModel> listarPorPerfil(@PathVariable PerfilUsuario perfil) {
+        return usuarioService.listarPorPerfil(perfil);
+    }
+    
     @GetMapping
     public List<UsuarioModel> listarTodos() {
         return usuarioService.listarTodos();

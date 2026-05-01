@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.model.PerfilUsuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import br.com.sistemaacademico.dto.AlterarPerfilDTO;
@@ -28,6 +29,10 @@ public class UsuarioService {
 
     public Page<UsuarioModel> listarPaginado(Pageable pageable) {
         return usuarioRepository.findAll(pageable);
+    }
+
+    public List<UsuarioModel> listarPorPerfil(PerfilUsuario perfil) {
+        return usuarioRepository.findByPerfil(perfil);
     }
 
     public List<UsuarioModel> listarTodos() {
