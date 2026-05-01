@@ -7,6 +7,7 @@ import br.com.sistemaacademico.dto.AlunoResumoDTO;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
 import br.com.sistemaacademico.model.AlunoModel;
 import br.com.sistemaacademico.model.CursoModel;
+import br.com.sistemaacademico.model.DisciplinaModel;
 import br.com.sistemaacademico.model.FrequenciaModel;
 import br.com.sistemaacademico.model.MatriculaModel;
 import br.com.sistemaacademico.model.NotaModel;
@@ -18,6 +19,7 @@ import br.com.sistemaacademico.repository.NotaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AlunoService {
@@ -71,6 +73,15 @@ public class AlunoService {
     public AlunoModel buscarPorRa(String ra) {
         return alunoRepository.findByRaAluno(ra)
                 .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado pelo RA informado"));
+    }
+
+    public AlunoModel buscarPorUsernameVinculado(String username) {
+        return alunoRepository.findByRaAluno(username)
+                .or(() -> alunoRepository.findByCpfPessoa(username))
+                .or(() -> alunoRepository.findByEmailPessoaIgnoreCase(username))
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Nenhum aluno vinculado foi encontrado para o usuário logado. Use RA, CPF ou e-mail como username."
+                ));
     }
 
     public AlunoModel salvar(AlunoRequestDTO dto) {
@@ -155,5 +166,36 @@ public class AlunoService {
                     totalFaltas
             );
         }).toList();
+    }
+
+    public AlunoModel buscarMeuCadastro(String username) {
+        return buscarPorUsernameVinculado(username);
+    }
+
+    public List<AlunoResumoDTO> gerarMeuResumo(String username) {
+        AlunoModel aluno = buscarPorUsernameVinculado(username);
+        return gerarResumoAluno(aluno.getIdPessoa());
+    }
+
+    public List<DisciplinaModel> listarMinhasDisciplinas(String username) {
+        AlunoModel aluno = buscarPorUsernameVinculado(username);
+
+        return matriculaRepository.findByAlunoIdPessoa(aluno.getIdPessoa())
+                .stream()
+                .map(MatriculaModel::getDisciplina)
+                .filter(disciplina -> disciplina != null)
+                .collect(Collectors.toMap(
+                        DisciplinaModel::getIdDisciplina,
+                        disciplina -> disciplina,
+                        (atual, ignorar) -> atual
+                ))
+                .values()
+                .stream()
+                .toList();
+    }
+
+    public CursoModel buscarMeuCurso(String username) {
+        AlunoModel aluno = buscarPorUsernameVinculado(username);
+        return aluno.getCurso();
     }
 }

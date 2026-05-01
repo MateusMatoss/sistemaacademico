@@ -41,6 +41,11 @@ public class MatriculaController {
         return matriculaService.buscarPorId(id);
     }
 
+    @GetMapping("/disciplina/{idDisciplina}")
+    public List<MatriculaModel> listarPorDisciplina(@PathVariable Long idDisciplina) {
+        return matriculaService.listarPorDisciplina(idDisciplina);
+    }
+
     @PostMapping
     public MatriculaModel salvar(@RequestBody @Valid MatriculaRequestDTO matriculaDTO) {
         return matriculaService.salvar(matriculaDTO);

@@ -10,4 +10,6 @@ import java.util.List;
 public interface MatriculaRepository extends JpaRepository<MatriculaModel, Long> {
 
     List<MatriculaModel> findByAlunoIdPessoa(Long idAluno);
+
+    List<MatriculaModel> findByDisciplinaIdDisciplina(Long idDisciplina);
 }

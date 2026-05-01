@@ -30,6 +30,7 @@ public class UsuarioModel {
     private PerfilUsuario perfil;
 
     private Boolean ativo = true;
+    private Boolean senhaTemporaria = false;
 
     @CreationTimestamp
     @Column(updatable = false)

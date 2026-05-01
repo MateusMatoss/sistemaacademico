@@ -35,7 +35,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String caminho = request.getServletPath();
 
-        if (caminho.startsWith("/auth") ||
+        if ("/auth/login".equals(caminho) ||
+                "/auth/registrar".equals(caminho) ||
+                "/auth/cursos".equals(caminho) ||
                 caminho.startsWith("/swagger-ui") ||
                 caminho.startsWith("/v3/api-docs")) {
             filterChain.doFilter(request, response);

@@ -5,8 +5,11 @@ import java.time.LocalDateTime;
 import br.com.sistemaacademico.dto.AlunoRequestDTO;
 import br.com.sistemaacademico.dto.AlunoResumoDTO;
 import br.com.sistemaacademico.model.AlunoModel;
+import br.com.sistemaacademico.model.CursoModel;
+import br.com.sistemaacademico.model.DisciplinaModel;
 import br.com.sistemaacademico.service.AlunoService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -54,6 +57,26 @@ public class AlunoController {
     @GetMapping("/resumo/{id}")
     public List<AlunoResumoDTO> gerarResumoAluno(@PathVariable Long id) {
         return alunoService.gerarResumoAluno(id);
+    }
+
+    @GetMapping("/me")
+    public AlunoModel buscarMeuCadastro(Authentication authentication) {
+        return alunoService.buscarMeuCadastro(authentication.getName());
+    }
+
+    @GetMapping("/me/resumo")
+    public List<AlunoResumoDTO> gerarMeuResumo(Authentication authentication) {
+        return alunoService.gerarMeuResumo(authentication.getName());
+    }
+
+    @GetMapping("/me/disciplinas")
+    public List<DisciplinaModel> listarMinhasDisciplinas(Authentication authentication) {
+        return alunoService.listarMinhasDisciplinas(authentication.getName());
+    }
+
+    @GetMapping("/me/curso")
+    public CursoModel buscarMeuCurso(Authentication authentication) {
+        return alunoService.buscarMeuCurso(authentication.getName());
     }
 
     @PostMapping

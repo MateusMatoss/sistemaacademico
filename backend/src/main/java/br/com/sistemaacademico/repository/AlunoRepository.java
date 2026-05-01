@@ -19,4 +19,6 @@ public interface AlunoRepository extends JpaRepository<AlunoModel, Long> {
     Optional<AlunoModel> findByCpfPessoa(String cpfPessoa);
 
     Optional<AlunoModel> findByRaAluno(String raAluno);
+
+    Optional<AlunoModel> findByEmailPessoaIgnoreCase(String emailPessoa);
 }

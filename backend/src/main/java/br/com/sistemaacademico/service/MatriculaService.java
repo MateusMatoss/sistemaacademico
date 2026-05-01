@@ -36,6 +36,10 @@ public class MatriculaService {
         return matriculaRepository.findAll();
     }
 
+    public List<MatriculaModel> listarPorDisciplina(Long idDisciplina) {
+        return matriculaRepository.findByDisciplinaIdDisciplina(idDisciplina);
+    }
+
     public MatriculaModel buscarPorId(Long id) {
         return matriculaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));

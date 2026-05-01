@@ -6,8 +6,37 @@
   <component name="ChangeListManager">
     <list default="true" id="e57e816c-769d-4d30-8f38-2a256c202696" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/DataInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/JwtAuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/controller/AlunoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/controller/AlunoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/controller/MatriculaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/controller/MatriculaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/dto/UsuarioRegistroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/dto/UsuarioRegistroDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/model/UsuarioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/model/UsuarioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/repository/AlunoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/repository/AlunoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/repository/MatriculaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/repository/MatriculaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/service/AlunoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/service/AlunoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/service/MatriculaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/service/MatriculaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/service/ProfessorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/service/ProfessorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/icons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/auth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/DashboardView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/DashboardView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/LoginView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +118,7 @@
       <workItem from="1777657177981" duration="163000" />
       <workItem from="1777657350514" duration="37000" />
       <workItem from="1777657411695" duration="2404000" />
-      <workItem from="1777660388373" duration="739000" />
+      <workItem from="1777660388373" duration="10319000" />
     </task>
     <servers />
   </component>
