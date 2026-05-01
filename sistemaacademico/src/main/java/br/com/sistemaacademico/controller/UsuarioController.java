@@ -25,29 +25,19 @@ public class UsuarioController {
         return usuarioService.listarTodos();
     }
 
-    @PutMapping("/{id}/alterar-senha")
-    public UsuarioModel alterarSenha(@PathVariable Long id, @RequestBody @Valid AlterarSenhaDTO dto) {
-        return usuarioService.alterarSenha(id, dto);
+    @GetMapping("/ativos")
+    public List<UsuarioModel> listarAtivos() {
+        return usuarioService.listarAtivos();
+    }
+
+    @GetMapping("/inativos")
+    public List<UsuarioModel> listarInativos() {
+        return usuarioService.listarInativos();
     }
 
     @GetMapping("/{id}")
     public UsuarioModel buscarPorId(@PathVariable Long id) {
         return usuarioService.buscarPorId(id);
-    }
-
-    @PutMapping("/{id}/ativar")
-    public UsuarioModel ativarUsuario(@PathVariable Long id) {
-        return usuarioService.ativarUsuario(id);
-    }
-
-    @PutMapping("/{id}/desativar")
-    public UsuarioModel desativarUsuario(@PathVariable Long id) {
-        return usuarioService.desativarUsuario(id);
-    }
-    
-    @PutMapping("/{id}/alterar-perfil")
-    public UsuarioModel alterarPerfil(@PathVariable Long id, @RequestBody @Valid AlterarPerfilDTO dto) {
-        return usuarioService.alterarPerfil(id, dto);
     }
 
     @GetMapping("/username/{username}")
@@ -58,6 +48,26 @@ public class UsuarioController {
     @PutMapping("/{id}")
     public UsuarioModel atualizar(@PathVariable Long id, @RequestBody @Valid UsuarioAtualizacaoDTO usuarioDTO) {
         return usuarioService.atualizar(id, usuarioDTO);
+    }
+
+    @PutMapping("/{id}/alterar-senha")
+    public UsuarioModel alterarSenha(@PathVariable Long id, @RequestBody @Valid AlterarSenhaDTO dto) {
+        return usuarioService.alterarSenha(id, dto);
+    }
+
+    @PutMapping("/{id}/alterar-perfil")
+    public UsuarioModel alterarPerfil(@PathVariable Long id, @RequestBody @Valid AlterarPerfilDTO dto) {
+        return usuarioService.alterarPerfil(id, dto);
+    }
+
+    @PutMapping("/{id}/ativar")
+    public UsuarioModel ativarUsuario(@PathVariable Long id) {
+        return usuarioService.ativarUsuario(id);
+    }
+
+    @PutMapping("/{id}/desativar")
+    public UsuarioModel desativarUsuario(@PathVariable Long id) {
+        return usuarioService.desativarUsuario(id);
     }
 
     @DeleteMapping("/{id}")

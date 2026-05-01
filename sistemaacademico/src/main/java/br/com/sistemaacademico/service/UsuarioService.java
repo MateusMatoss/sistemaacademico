@@ -56,6 +56,14 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    public List<UsuarioModel> listarAtivos() {
+        return usuarioRepository.findByAtivo(true);
+    }
+
+    public List<UsuarioModel> listarInativos() {
+        return usuarioRepository.findByAtivo(false);
+    }
+
     public UsuarioModel alterarPerfil(Long id, AlterarPerfilDTO dto) {
         UsuarioModel usuario = buscarPorId(id);
 
