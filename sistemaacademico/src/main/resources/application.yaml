@@ -2,8 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bd_sistemaacademico
     username: postgres
-    password: 123456
-    driver-class-name: org.postgresql.Driver
+    password: sua_senha
 
   jpa:
     hibernate:
@@ -12,3 +11,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+server:
+  port: 8080
