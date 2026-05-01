@@ -34,7 +34,7 @@ public class SecurityConfig {
                                 "/v3/api-docs/**"
                         ).permitAll()
 
-                        .requestMatchers("/dashboard/**").hasRole("ADMIN")
+                        .requestMatchers("/dashboard/**").permitAll() //DEPOIS VOLTAR PARA: .requestMatchers("/dashboard/**").hasRole("ADMIN")
                         .requestMatchers("/logs-acesso/**").hasRole("ADMIN")
                         .requestMatchers("/usuarios/**").hasRole("ADMIN")
                         .requestMatchers("/alunos/**").hasAnyRole("ADMIN", "PROFESSOR", "ALUNO")

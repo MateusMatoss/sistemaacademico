@@ -236,8 +236,9 @@ GET /logs-acesso/periodo?inicio=...&fim=...
 
 --- 
 
-# 👨‍💻 Autor
+# 👨‍💻 Autores
 
 ## Mateus Silva de Matos
+## Theo Pinheiro de Almeida Fernades Botelho da Ponte
 
 Projeto desenvolvido para fins acadêmicos (TCC / ADS - FATEC)

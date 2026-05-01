@@ -6,86 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e57e816c-769d-4d30-8f38-2a256c202696" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/SistemaacademicoApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/config/CorsConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/config/DataInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/config/JwtAuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/config/OpenApiConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/AlunoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/CursoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/DashboardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/DisciplinaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/FrequenciaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/LogAcessoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/MatriculaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/NotaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/ProfessorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/controller/UsuarioController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/AlterarPerfilDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/AlterarSenhaDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/AlunoRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/AlunoResumoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/ApiResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/CursoRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/CursoResumoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/DashboardResumoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/DisciplinaRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/FrequenciaRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/LoginDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/MatriculaRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/NotaRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/ProfessorRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/ProfessorResumoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/UsuarioAtualizacaoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/UsuarioRegistroDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/dto/UsuarioResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/exception/BusinessException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/exception/ErroResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/exception/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/exception/ResourceNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/AlunoModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/CursoModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/DisciplinaModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/FrequenciaModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/LogAcessoModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/MatriculaModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/NotaModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/PerfilUsuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/PessoaModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/ProfessorModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/model/UsuarioModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/repository/AlunoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/repository/CursoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/repository/DisciplinaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/repository/FrequenciaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/repository/LogAcessoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/repository/MatriculaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/repository/NotaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/repository/ProfessorRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/repository/UsuarioRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/AlunoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/AuthService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/CursoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/DashboardService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/DisciplinaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/FrequenciaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/JwtService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/LogAcessoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/MatriculaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/NotaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/ProfessorService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/java/br/com/sistemaacademico/service/UsuarioService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistemaacademico/src/test/java/br/com/sistemaacademico/SistemaacademicoApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/sistemaacademico/config/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,27 +33,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.SistemaacademicoApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/mateu/Desktop/TG - SISTEMA ACADEMICO/sistemaacademico",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SistemaacademicoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mateu/Desktop/TG - SISTEMA ACADEMICO/sistemaacademico&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.2.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mateu\Desktop\TG - SISTEMA ACADEMICO\sistemaacademico" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="SistemaacademicoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -160,7 +88,8 @@
       <workItem from="1777503364690" duration="6000" />
       <workItem from="1777657177981" duration="163000" />
       <workItem from="1777657350514" duration="37000" />
-      <workItem from="1777657411695" duration="870000" />
+      <workItem from="1777657411695" duration="2404000" />
+      <workItem from="1777660388373" duration="739000" />
     </task>
     <servers />
   </component>
