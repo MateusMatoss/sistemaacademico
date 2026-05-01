@@ -6,6 +6,10 @@ import br.com.sistemaacademico.dto.UsuarioAtualizacaoDTO;
 import br.com.sistemaacademico.model.UsuarioModel;
 import br.com.sistemaacademico.service.UsuarioService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +27,17 @@ public class UsuarioController {
     @GetMapping
     public List<UsuarioModel> listarTodos() {
         return usuarioService.listarTodos();
+    }
+
+    @GetMapping("/paginado")
+    public Page<UsuarioModel> listarPaginado(
+            @PageableDefault(
+                    size = 10,
+                    sort = "username",
+                    direction = Sort.Direction.ASC
+            ) Pageable pageable
+    ) {
+        return usuarioService.listarPaginado(pageable);
     }
 
     @GetMapping("/ativos")

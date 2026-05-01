@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import br.com.sistemaacademico.dto.AlterarPerfilDTO;
 import br.com.sistemaacademico.dto.AlterarSenhaDTO;
 import br.com.sistemaacademico.dto.UsuarioAtualizacaoDTO;
@@ -22,6 +24,10 @@ public class UsuarioService {
     public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    public Page<UsuarioModel> listarPaginado(Pageable pageable) {
+        return usuarioRepository.findAll(pageable);
     }
 
     public List<UsuarioModel> listarTodos() {
