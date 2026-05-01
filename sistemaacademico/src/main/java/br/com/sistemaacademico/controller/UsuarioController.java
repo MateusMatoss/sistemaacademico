@@ -1,9 +1,11 @@
 package br.com.sistemaacademico.controller;
 
-import br.com.sistemaacademico.model.PerfilUsuario;
 import br.com.sistemaacademico.dto.AlterarPerfilDTO;
 import br.com.sistemaacademico.dto.AlterarSenhaDTO;
+import br.com.sistemaacademico.dto.ApiResponseDTO;
 import br.com.sistemaacademico.dto.UsuarioAtualizacaoDTO;
+import br.com.sistemaacademico.dto.UsuarioResponseDTO;
+import br.com.sistemaacademico.model.PerfilUsuario;
 import br.com.sistemaacademico.model.UsuarioModel;
 import br.com.sistemaacademico.service.UsuarioService;
 import jakarta.validation.Valid;
@@ -12,8 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
-import br.com.sistemaacademico.dto.UsuarioResponseDTO;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -26,11 +28,6 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @GetMapping("/perfil/{perfil}")
-    public List<UsuarioModel> listarPorPerfil(@PathVariable PerfilUsuario perfil) {
-        return usuarioService.listarPorPerfil(perfil);
-    }
-
     @GetMapping
     public List<UsuarioResponseDTO> listarTodos() {
         return usuarioService.listarTodos()
@@ -41,11 +38,7 @@ public class UsuarioController {
 
     @GetMapping("/paginado")
     public Page<UsuarioModel> listarPaginado(
-            @PageableDefault(
-                    size = 10,
-                    sort = "username",
-                    direction = Sort.Direction.ASC
-            ) Pageable pageable
+            @PageableDefault(size = 10, sort = "username", direction = Sort.Direction.ASC) Pageable pageable
     ) {
         return usuarioService.listarPaginado(pageable);
     }
@@ -60,6 +53,11 @@ public class UsuarioController {
         return usuarioService.listarInativos();
     }
 
+    @GetMapping("/perfil/{perfil}")
+    public List<UsuarioModel> listarPorPerfil(@PathVariable PerfilUsuario perfil) {
+        return usuarioService.listarPorPerfil(perfil);
+    }
+
     @GetMapping("/{id}")
     public UsuarioResponseDTO buscarPorId(@PathVariable Long id) {
         return usuarioService.converterParaResponseDTO(
@@ -68,8 +66,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/username/{username}")
-    public UsuarioModel buscarPorUsername(@PathVariable String username) {
-        return usuarioService.buscarPorUsername(username);
+    public UsuarioResponseDTO buscarPorUsername(@PathVariable String username) {
+        return usuarioService.converterParaResponseDTO(
+                usuarioService.buscarPorUsername(username)
+        );
     }
 
     @PutMapping("/{id}")
@@ -98,7 +98,14 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public ApiResponseDTO<Void> deletar(@PathVariable Long id) {
         usuarioService.deletar(id);
+
+        return new ApiResponseDTO<>(
+                LocalDateTime.now(),
+                200,
+                "Usuário excluído com sucesso",
+                null
+        );
     }
 }
