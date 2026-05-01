@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.dto.AlterarPerfilDTO;
 import br.com.sistemaacademico.dto.AlterarSenhaDTO;
 import br.com.sistemaacademico.dto.UsuarioAtualizacaoDTO;
 import br.com.sistemaacademico.exception.BusinessException;
@@ -35,6 +36,14 @@ public class UsuarioService {
         }
 
         usuario.setPassword(passwordEncoder.encode(dto.getNovaSenha()));
+
+        return usuarioRepository.save(usuario);
+    }
+
+    public UsuarioModel alterarPerfil(Long id, AlterarPerfilDTO dto) {
+        UsuarioModel usuario = buscarPorId(id);
+
+        usuario.setPerfil(dto.getPerfil());
 
         return usuarioRepository.save(usuario);
     }
