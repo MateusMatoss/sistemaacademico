@@ -40,6 +40,22 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    public UsuarioModel ativarUsuario(Long id) {
+        UsuarioModel usuario = buscarPorId(id);
+
+        usuario.setAtivo(true);
+
+        return usuarioRepository.save(usuario);
+    }
+
+    public UsuarioModel desativarUsuario(Long id) {
+        UsuarioModel usuario = buscarPorId(id);
+
+        usuario.setAtivo(false);
+
+        return usuarioRepository.save(usuario);
+    }
+
     public UsuarioModel alterarPerfil(Long id, AlterarPerfilDTO dto) {
         UsuarioModel usuario = buscarPorId(id);
 

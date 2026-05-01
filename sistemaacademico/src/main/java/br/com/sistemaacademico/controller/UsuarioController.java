@@ -35,11 +35,21 @@ public class UsuarioController {
         return usuarioService.buscarPorId(id);
     }
 
+    @PutMapping("/{id}/ativar")
+    public UsuarioModel ativarUsuario(@PathVariable Long id) {
+        return usuarioService.ativarUsuario(id);
+    }
+
+    @PutMapping("/{id}/desativar")
+    public UsuarioModel desativarUsuario(@PathVariable Long id) {
+        return usuarioService.desativarUsuario(id);
+    }
+    
     @PutMapping("/{id}/alterar-perfil")
     public UsuarioModel alterarPerfil(@PathVariable Long id, @RequestBody @Valid AlterarPerfilDTO dto) {
         return usuarioService.alterarPerfil(id, dto);
     }
-    
+
     @GetMapping("/username/{username}")
     public UsuarioModel buscarPorUsername(@PathVariable String username) {
         return usuarioService.buscarPorUsername(username);

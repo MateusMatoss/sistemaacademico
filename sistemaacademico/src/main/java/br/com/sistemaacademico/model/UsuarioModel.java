@@ -29,6 +29,8 @@ public class UsuarioModel {
     @Enumerated(EnumType.STRING)
     private PerfilUsuario perfil;
 
+    private Boolean ativo = true;
+
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime dataCriacao;

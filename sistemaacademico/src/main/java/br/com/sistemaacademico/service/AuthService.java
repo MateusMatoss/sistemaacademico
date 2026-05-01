@@ -59,15 +59,13 @@ public class AuthService {
         UsuarioModel usuario = usuarioRepository.findByUsername(dto.getUsername())
                 .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado"));
 
+        if (usuario.getAtivo() == null || !usuario.getAtivo()) {
+            throw new BusinessException("Usuário inativo. Entre em contato com o administrador.");
+        }
+
         if (!passwordEncoder.matches(dto.getPassword(), usuario.getPassword())) {
             throw new BusinessException("Senha inválida");
         }
-
-        LogAcessoModel log = new LogAcessoModel();
-        log.setUsername(usuario.getUsername());
-        log.setPerfil(usuario.getPerfil().name());
-        log.setDataHoraLogin(LocalDateTime.now());
-        logAcessoRepository.save(log);
 
         String token = jwtService.gerarToken(usuario.getUsername());
 
