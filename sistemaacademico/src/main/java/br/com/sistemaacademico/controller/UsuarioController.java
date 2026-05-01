@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
+import br.com.sistemaacademico.dto.UsuarioResponseDTO;
 
 import java.util.List;
 
@@ -29,10 +30,13 @@ public class UsuarioController {
     public List<UsuarioModel> listarPorPerfil(@PathVariable PerfilUsuario perfil) {
         return usuarioService.listarPorPerfil(perfil);
     }
-    
+
     @GetMapping
-    public List<UsuarioModel> listarTodos() {
-        return usuarioService.listarTodos();
+    public List<UsuarioResponseDTO> listarTodos() {
+        return usuarioService.listarTodos()
+                .stream()
+                .map(usuarioService::converterParaResponseDTO)
+                .toList();
     }
 
     @GetMapping("/paginado")
@@ -57,8 +61,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public UsuarioModel buscarPorId(@PathVariable Long id) {
-        return usuarioService.buscarPorId(id);
+    public UsuarioResponseDTO buscarPorId(@PathVariable Long id) {
+        return usuarioService.converterParaResponseDTO(
+                usuarioService.buscarPorId(id)
+        );
     }
 
     @GetMapping("/username/{username}")

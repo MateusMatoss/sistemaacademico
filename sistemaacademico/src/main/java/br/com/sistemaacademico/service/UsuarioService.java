@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.dto.UsuarioResponseDTO;
 import br.com.sistemaacademico.model.PerfilUsuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,6 +35,7 @@ public class UsuarioService {
     public List<UsuarioModel> listarPorPerfil(PerfilUsuario perfil) {
         return usuarioRepository.findByPerfil(perfil);
     }
+
 
     public List<UsuarioModel> listarTodos() {
         return usuarioRepository.findAll();
@@ -120,5 +122,15 @@ public class UsuarioService {
     public void deletar(Long id) {
         UsuarioModel usuario = buscarPorId(id);
         usuarioRepository.delete(usuario);
+    }
+    public UsuarioResponseDTO converterParaResponseDTO(UsuarioModel usuario) {
+        return new UsuarioResponseDTO(
+                usuario.getIdUsuario(),
+                usuario.getUsername(),
+                usuario.getPerfil(),
+                usuario.getAtivo(),
+                usuario.getDataCriacao(),
+                usuario.getDataAtualizacao()
+        );
     }
 }
