@@ -1,7 +1,9 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.UsuarioAtualizacaoDTO;
 import br.com.sistemaacademico.model.UsuarioModel;
 import br.com.sistemaacademico.service.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,5 +31,15 @@ public class UsuarioController {
     @GetMapping("/username/{username}")
     public UsuarioModel buscarPorUsername(@PathVariable String username) {
         return usuarioService.buscarPorUsername(username);
+    }
+
+    @PutMapping("/{id}")
+    public UsuarioModel atualizar(@PathVariable Long id, @RequestBody @Valid UsuarioAtualizacaoDTO usuarioDTO) {
+        return usuarioService.atualizar(id, usuarioDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        usuarioService.deletar(id);
     }
 }
