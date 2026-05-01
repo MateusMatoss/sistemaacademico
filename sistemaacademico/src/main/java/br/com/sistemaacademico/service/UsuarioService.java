@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.service;
 
+import br.com.sistemaacademico.dto.AlterarSenhaDTO;
 import br.com.sistemaacademico.dto.UsuarioAtualizacaoDTO;
 import br.com.sistemaacademico.exception.BusinessException;
 import br.com.sistemaacademico.exception.ResourceNotFoundException;
@@ -24,6 +25,18 @@ public class UsuarioService {
 
     public List<UsuarioModel> listarTodos() {
         return usuarioRepository.findAll();
+    }
+
+    public UsuarioModel alterarSenha(Long id, AlterarSenhaDTO dto) {
+        UsuarioModel usuario = buscarPorId(id);
+
+        if (!passwordEncoder.matches(dto.getSenhaAtual(), usuario.getPassword())) {
+            throw new BusinessException("Senha atual incorreta");
+        }
+
+        usuario.setPassword(passwordEncoder.encode(dto.getNovaSenha()));
+
+        return usuarioRepository.save(usuario);
     }
 
     public UsuarioModel buscarPorId(Long id) {

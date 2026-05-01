@@ -1,5 +1,6 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.AlterarSenhaDTO;
 import br.com.sistemaacademico.dto.UsuarioAtualizacaoDTO;
 import br.com.sistemaacademico.model.UsuarioModel;
 import br.com.sistemaacademico.service.UsuarioService;
@@ -23,6 +24,11 @@ public class UsuarioController {
         return usuarioService.listarTodos();
     }
 
+    @PutMapping("/{id}/alterar-senha")
+    public UsuarioModel alterarSenha(@PathVariable Long id, @RequestBody @Valid AlterarSenhaDTO dto) {
+        return usuarioService.alterarSenha(id, dto);
+    }
+    
     @GetMapping("/{id}")
     public UsuarioModel buscarPorId(@PathVariable Long id) {
         return usuarioService.buscarPorId(id);
