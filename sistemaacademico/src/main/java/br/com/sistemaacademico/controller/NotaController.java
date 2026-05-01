@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.ApiResponseDTO;
+import java.time.LocalDateTime;
 import br.com.sistemaacademico.dto.NotaRequestDTO;
 import br.com.sistemaacademico.model.NotaModel;
 import br.com.sistemaacademico.service.NotaService;
@@ -55,7 +57,14 @@ public class NotaController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public ApiResponseDTO<Void> deletar(@PathVariable Long id) {
         notaService.deletar(id);
+
+        return new ApiResponseDTO<>(
+                LocalDateTime.now(),
+                200,
+                "Nota excluída com sucesso",
+                null
+        );
     }
 }

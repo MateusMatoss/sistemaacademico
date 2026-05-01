@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.ApiResponseDTO;
+import java.time.LocalDateTime;
 import br.com.sistemaacademico.dto.ProfessorRequestDTO;
 import br.com.sistemaacademico.dto.ProfessorResumoDTO;
 import br.com.sistemaacademico.model.ProfessorModel;
@@ -56,8 +58,15 @@ public class ProfessorController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public ApiResponseDTO<Void> deletar(@PathVariable Long id) {
         professorService.deletar(id);
+
+        return new ApiResponseDTO<>(
+                LocalDateTime.now(),
+                200,
+                "Professor excluído com sucesso",
+                null
+        );
     }
 
     @GetMapping("/buscar")

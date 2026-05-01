@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.ApiResponseDTO;
+import java.time.LocalDateTime;
 import br.com.sistemaacademico.dto.MatriculaRequestDTO;
 import br.com.sistemaacademico.model.MatriculaModel;
 import br.com.sistemaacademico.service.MatriculaService;
@@ -50,7 +52,14 @@ public class MatriculaController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public ApiResponseDTO<Void> deletar(@PathVariable Long id) {
         matriculaService.deletar(id);
+
+        return new ApiResponseDTO<>(
+                LocalDateTime.now(),
+                200,
+                "Matrícula excluída com sucesso",
+                null
+        );
     }
 }

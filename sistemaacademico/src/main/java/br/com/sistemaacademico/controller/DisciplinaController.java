@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.ApiResponseDTO;
+import java.time.LocalDateTime;
 import br.com.sistemaacademico.dto.DisciplinaRequestDTO;
 import br.com.sistemaacademico.model.DisciplinaModel;
 import br.com.sistemaacademico.service.DisciplinaService;
@@ -60,8 +62,15 @@ public class DisciplinaController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public ApiResponseDTO<Void> deletar(@PathVariable Long id) {
         disciplinaService.deletar(id);
+
+        return new ApiResponseDTO<>(
+                LocalDateTime.now(),
+                200,
+                "Disciplina excluída com sucesso",
+                null
+        );
     }
 
     @GetMapping("/buscar")

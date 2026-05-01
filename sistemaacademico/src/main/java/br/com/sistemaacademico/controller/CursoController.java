@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.ApiResponseDTO;
+import java.time.LocalDateTime;
 import br.com.sistemaacademico.dto.CursoRequestDTO;
 import br.com.sistemaacademico.dto.CursoResumoDTO;
 import br.com.sistemaacademico.model.CursoModel;
@@ -56,8 +58,15 @@ public class CursoController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public ApiResponseDTO<Void> deletar(@PathVariable Long id) {
         cursoService.deletar(id);
+
+        return new ApiResponseDTO<>(
+                LocalDateTime.now(),
+                200,
+                "Curso excluído com sucesso",
+                null
+        );
     }
 
     @GetMapping("/buscar")

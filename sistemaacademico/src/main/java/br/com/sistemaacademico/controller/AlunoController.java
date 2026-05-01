@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.ApiResponseDTO;
+import java.time.LocalDateTime;
 import br.com.sistemaacademico.dto.AlunoRequestDTO;
 import br.com.sistemaacademico.dto.AlunoResumoDTO;
 import br.com.sistemaacademico.model.AlunoModel;
@@ -65,8 +67,15 @@ public class AlunoController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public ApiResponseDTO<Void> deletar(@PathVariable Long id) {
         alunoService.deletar(id);
+
+        return new ApiResponseDTO<>(
+                LocalDateTime.now(),
+                200,
+                "Aluno excluído com sucesso",
+                null
+        );
     }
 
     @GetMapping("/buscar")

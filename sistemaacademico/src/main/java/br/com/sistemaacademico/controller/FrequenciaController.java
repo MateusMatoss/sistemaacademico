@@ -1,5 +1,7 @@
 package br.com.sistemaacademico.controller;
 
+import br.com.sistemaacademico.dto.ApiResponseDTO;
+import java.time.LocalDateTime;
 import br.com.sistemaacademico.dto.FrequenciaRequestDTO;
 import br.com.sistemaacademico.model.FrequenciaModel;
 import br.com.sistemaacademico.service.FrequenciaService;
@@ -55,7 +57,14 @@ public class FrequenciaController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public ApiResponseDTO<Void> deletar(@PathVariable Long id) {
         frequenciaService.deletar(id);
+
+        return new ApiResponseDTO<>(
+                LocalDateTime.now(),
+                200,
+                "Frequência excluída com sucesso",
+                null
+        );
     }
 }
