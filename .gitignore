@@ -1,0 +1,26 @@
+# Java / Spring Boot
+backend/target/
+backend/*.iml
+
+# Maven Wrapper
+# manter mvnw, mvnw.cmd e .mvn no projeto
+
+# IntelliJ
+backend/.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Frontend / Vue
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# Logs
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
