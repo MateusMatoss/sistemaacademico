@@ -160,7 +160,7 @@ export default {
         {
           key: "totalAlunos",
           label: "Alunos",
-          badge: "AL",
+          badge: ["M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2", "M9.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8", "M20 21v-2a4 4 0 0 0-3-3.87", "M16 3.13a4 4 0 0 1 0 7.75"],
           variant: "blue",
           description: "Volume total de alunos cadastrados na instituição.",
           meta: "Base principal de acompanhamento acadêmico.",
@@ -168,7 +168,7 @@ export default {
         {
           key: "totalProfessores",
           label: "Professores",
-          badge: "PR",
+          badge: ["M12 3 2 8l10 5 10-5-10-5Z", "M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5", "M22 8v6"],
           variant: "navy",
           description: "Corpo docente registrado para oferta e condução das aulas.",
           meta: "Equipe responsável por disciplinas, notas e frequências.",
@@ -176,7 +176,7 @@ export default {
         {
           key: "totalCursos",
           label: "Cursos",
-          badge: "CU",
+          badge: ["M4 19.5A2.5 2.5 0 0 1 6.5 17H20", "M6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6.5 3z"],
           variant: "green",
           description: "Estrutura curricular disponível no sistema acadêmico.",
           meta: "Serve de base para alunos e disciplinas vinculadas.",
@@ -184,7 +184,7 @@ export default {
         {
           key: "totalDisciplinas",
           label: "Disciplinas",
-          badge: "DI",
+          badge: ["M5 4h11l3 3v13H5z", "M14 4v4h4", "M8 13h8", "M8 17h5"],
           variant: "indigo",
           description: "Componentes acadêmicos ativos para matrícula e ensino.",
           meta: "Distribuem a carga letiva por curso.",
@@ -192,7 +192,7 @@ export default {
         {
           key: "totalMatriculas",
           label: "Matrículas",
-          badge: "MT",
+          badge: ["M8 7h8", "M8 12h8", "M8 17h5", "M5 3h14a2 2 0 0 1 2 2v14l-4-3-4 3-4-3-4 3V5a2 2 0 0 1 2-2Z"],
           variant: "amber",
           description: "Relações entre alunos e disciplinas atualmente registradas.",
           meta: "Indicador direto de movimentação acadêmica.",
@@ -200,7 +200,7 @@ export default {
         {
           key: "totalNotas",
           label: "Notas",
-          badge: "NT",
+          badge: ["M9 11l3 3L22 4", "M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"],
           variant: "cyan",
           description: "Lançamentos de avaliação efetuados pelos professores.",
           meta: "Reflete o ritmo de registro pedagógico.",
@@ -208,7 +208,7 @@ export default {
         {
           key: "totalFrequencias",
           label: "Frequências",
-          badge: "FR",
+          badge: ["M8 2v4", "M16 2v4", "M3 10h18", "M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z", "M9 15l2 2 4-4"],
           variant: "red",
           description: "Registros de presença e ausência por aula lançados no sistema.",
           meta: "Mostra o acompanhamento diário da turma.",

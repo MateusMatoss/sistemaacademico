@@ -19,7 +19,11 @@
         class="sidebar-link"
         @click="$emit('close')"
       >
-        <span class="sidebar-icon">{{ item.icon }}</span>
+        <span class="sidebar-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path v-for="(path, index) in item.icon" :key="`${item.to}-icon-${index}`" :d="path" />
+          </svg>
+        </span>
         <span>{{ item.label }}</span>
       </RouterLink>
     </nav>
@@ -53,20 +57,90 @@ export default {
   data() {
     return {
       navigationItems: [
-        { label: "Dashboard", to: "/dashboard", icon: "DB", allowedPerfis: ["ADMIN", "PROFESSOR"] },
-        { label: "Alunos", to: "/alunos", icon: "AL", allowedPerfis: ["ADMIN", "PROFESSOR"] },
-        { label: "Professores", to: "/professores", icon: "PR", allowedPerfis: ["ADMIN"] },
-        { label: "Cursos", to: "/cursos", icon: "CU", allowedPerfis: ["ADMIN", "PROFESSOR"] },
-        { label: "Disciplinas", to: "/disciplinas", icon: "DI", allowedPerfis: ["ADMIN", "PROFESSOR"] },
-        { label: "Matrículas", to: "/matriculas", icon: "MT", allowedPerfis: ["ADMIN"] },
-        { label: "Notas", to: "/notas", icon: "NT", allowedPerfis: ["ADMIN", "PROFESSOR"] },
-        { label: "Frequências", to: "/frequencias", icon: "FR", allowedPerfis: ["ADMIN", "PROFESSOR"] },
-        { label: "Usuários", to: "/usuarios", icon: "US", allowedPerfis: ["ADMIN"] },
-        { label: "Meus Dados", to: "/meus-dados", icon: "MD", allowedPerfis: ["ALUNO"] },
-        { label: "Meu Curso", to: "/meu-curso", icon: "MC", allowedPerfis: ["ALUNO"] },
-        { label: "Minhas Disciplinas", to: "/minhas-disciplinas", icon: "DS", allowedPerfis: ["ALUNO"] },
-        { label: "Minhas Notas", to: "/minhas-notas", icon: "NT", allowedPerfis: ["ALUNO"] },
-        { label: "Minha Frequência", to: "/minha-frequencia", icon: "FR", allowedPerfis: ["ALUNO"] },
+        {
+          label: "Dashboard",
+          to: "/dashboard",
+          icon: ["M4 13h7V4H4z", "M13 20h7v-9h-7z", "M13 11h7V4h-7z", "M4 20h7v-5H4z"],
+          allowedPerfis: ["ADMIN", "PROFESSOR"],
+        },
+        {
+          label: "Alunos",
+          to: "/alunos",
+          icon: ["M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2", "M9.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8", "M20 21v-2a4 4 0 0 0-3-3.87", "M16 3.13a4 4 0 0 1 0 7.75"],
+          allowedPerfis: ["ADMIN", "PROFESSOR"],
+        },
+        {
+          label: "Professores",
+          to: "/professores",
+          icon: ["M12 3 2 8l10 5 10-5-10-5Z", "M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5", "M22 8v6"],
+          allowedPerfis: ["ADMIN"],
+        },
+        {
+          label: "Cursos",
+          to: "/cursos",
+          icon: ["M4 19.5A2.5 2.5 0 0 1 6.5 17H20", "M6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6.5 3z"],
+          allowedPerfis: ["ADMIN", "PROFESSOR"],
+        },
+        {
+          label: "Disciplinas",
+          to: "/disciplinas",
+          icon: ["M5 4h11l3 3v13H5z", "M14 4v4h4", "M8 13h8", "M8 17h5"],
+          allowedPerfis: ["ADMIN", "PROFESSOR"],
+        },
+        {
+          label: "Matrículas",
+          to: "/matriculas",
+          icon: ["M8 7h8", "M8 12h8", "M8 17h5", "M5 3h14a2 2 0 0 1 2 2v14l-4-3-4 3-4-3-4 3V5a2 2 0 0 1 2-2Z"],
+          allowedPerfis: ["ADMIN"],
+        },
+        {
+          label: "Notas",
+          to: "/notas",
+          icon: ["M9 11l3 3L22 4", "M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"],
+          allowedPerfis: ["ADMIN", "PROFESSOR"],
+        },
+        {
+          label: "Frequências",
+          to: "/frequencias",
+          icon: ["M8 2v4", "M16 2v4", "M3 10h18", "M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z", "M9 15l2 2 4-4"],
+          allowedPerfis: ["ADMIN", "PROFESSOR"],
+        },
+        {
+          label: "Usuários",
+          to: "/usuarios",
+          icon: ["M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2", "M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8", "M23 21v-2a4 4 0 0 0-3-3.87", "M16 3.13a4 4 0 0 1 0 7.75"],
+          allowedPerfis: ["ADMIN"],
+        },
+        {
+          label: "Meus Dados",
+          to: "/meus-dados",
+          icon: ["M20 21a8 8 0 1 0-16 0", "M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8"],
+          allowedPerfis: ["ALUNO"],
+        },
+        {
+          label: "Meu Curso",
+          to: "/meu-curso",
+          icon: ["M12 3 2 8l10 5 10-5-10-5Z", "M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"],
+          allowedPerfis: ["ALUNO"],
+        },
+        {
+          label: "Minhas Disciplinas",
+          to: "/minhas-disciplinas",
+          icon: ["M4 19.5A2.5 2.5 0 0 1 6.5 17H20", "M6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6.5 3z"],
+          allowedPerfis: ["ALUNO"],
+        },
+        {
+          label: "Minhas Notas",
+          to: "/minhas-notas",
+          icon: ["M9 11l3 3L22 4", "M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"],
+          allowedPerfis: ["ALUNO"],
+        },
+        {
+          label: "Minha Frequência",
+          to: "/minha-frequencia",
+          icon: ["M8 2v4", "M16 2v4", "M3 10h18", "M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z", "M9 15l2 2 4-4"],
+          allowedPerfis: ["ALUNO"],
+        },
       ],
     };
   },
@@ -154,11 +228,20 @@ export default {
 }
 
 .sidebar-icon {
-  width: 24px;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.sidebar-icon svg {
+  width: 18px;
+  height: 18px;
 }
 
 .sidebar-footer {

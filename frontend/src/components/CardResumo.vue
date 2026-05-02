@@ -6,7 +6,11 @@
         <strong class="summary-card__value">{{ valor }}</strong>
       </div>
 
-      <span class="summary-card__badge">{{ badge }}</span>
+      <span class="summary-card__badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path v-for="(path, index) in badge" :key="`badge-${index}`" :d="path" />
+        </svg>
+      </span>
     </div>
 
     <p class="summary-card__hint">{{ descricao }}</p>
@@ -34,8 +38,8 @@ export default {
       default: "Indicador atualizado pela API.",
     },
     badge: {
-      type: String,
-      default: "ID",
+      type: Array,
+      default: () => ["M12 5v14", "M5 12h14"],
     },
     meta: {
       type: String,
@@ -96,9 +100,8 @@ export default {
 
 .summary-card__badge {
   flex: 0 0 auto;
-  min-width: 48px;
+  width: 48px;
   height: 48px;
-  padding: 0 12px;
   border-radius: 16px;
   display: inline-flex;
   align-items: center;
@@ -108,6 +111,11 @@ export default {
   letter-spacing: 0.08em;
   color: var(--card-accent, #2563eb);
   background: var(--card-soft, #dbeafe);
+}
+
+.summary-card__badge svg {
+  width: 20px;
+  height: 20px;
 }
 
 .summary-card__hint {
